@@ -494,7 +494,7 @@
                 </li>
             </ul>
         </div>
-        <p class="copyright">© 2022 Leonardo "Leonzera" Andrade</p>
+        <p class="copyright">© {{ date('Y') }} Leonardo "Leonzera" Andrade</p>
     </div>
 </body>
 
