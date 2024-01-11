@@ -1,14 +1,13 @@
 <ul>
     <li>
-        <img src="img/secrypter.jpg" alt="2" />
+        <img src="img/tasky.png" alt="2" />
         <div>
-            <h2>Secrypter</h2>
-            {{-- <a href="#">Saiba mais</a> --}}
-            <br />
-            <br />
+            <h2>Tasky</h2>
             <p>
-                Gerador de senhas aleatórias
+                Sistema para profisisonais freelancers gerenciarem seus clientes e respectivos projetos
             </p>
+            <br>
+            <a href="#">Saiba mais</a>
         </div>
     </li>
 </ul>
