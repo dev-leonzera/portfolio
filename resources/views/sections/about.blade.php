@@ -10,30 +10,21 @@
     </p>
     <br>
     <p>
-        Tenho experiência com:
-        <ul>
-            <li style="width: max-content">
-                ✔️ Manutenção de ERPs
-                
-            </li>
-            <li style="width: max-content">
-                ✔️ Desenvolvimento e manutenção de websites e sistemas.
-            </li>
-            <li style="width: max-content">
-                ✔️ Desenvolvimento e manutenção de REST APIs
-            </li>
-            <li style="width: max-content">
-                ✔️ Gerenciar recursos da AWS (EC2, RDS, S3)
-            </li>
-            <li style="width: max-content">
-                ✔️ Gerenciar Servidores Linux
-            </li>
-        </ul>
+        Tenho experiência com:        
+        <br>        
+        <span style="width: max-content">✔️ Desenvolvimento e manutenção de websites e sistemas.</span>
+        <br>
+        <span style="width: max-content">✔️ Desenvolvimento e manutenção de REST APIs</span>
+        <br>
+        <span style="width: max-content">✔️ Gerenciar recursos da AWS (EC2, RDS, S3)</span>
+        <br>
+        <span style="width: max-content">✔️ Gerenciar Servidores Linux</span>
+        
     </p>
     <br>
-    <p>
+    <span>
         Estou ansioso para contribuir com meus esforços e dedicação para ajudar a sua empresa a alcançar
         seus objetivos.
-    </p>
+    </span>
     <br />
 </div>
