@@ -18,16 +18,6 @@ Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/ebook', [EbookController::class, 'index'])->name('ebook');
 
-Route::get('/debug-paths', function () {
-    return [
-        'Base Path' => base_path(),
-        'Public Path' => public_path(),
-        '__DIR__ (routes)' => __DIR__, // O diretório atual do routes/web.php
-        'APP_URL' => env('APP_URL'), // Verifique o valor lido do .env
-        'APP_ENV' => env('APP_ENV'), // Verifique o ambiente
-    ];
-});
-
 // Rotas autenticadas (painel admin)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
