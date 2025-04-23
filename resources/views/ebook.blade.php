@@ -90,13 +90,13 @@
                     </div>
                     <!-- Feature 2 -->
                     <div class="bg-[#0D1117] p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold text-amber-400 mb-3">Práticas Modernas</h3>
-                        <p class="text-gray-400">Aprenda as melhores práticas e padrões de desenvolvimento atuais.</p>
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">Direcionamento Profissional</h3>
+                        <p class="text-gray-400">Entenda como escolher sua área, como aprender de forma mais eficaz e evitar os erros mais comuns da jornada.</p>
                     </div>
                     <!-- Feature 3 -->
                     <div class="bg-[#0D1117] p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold text-amber-400 mb-3">Projetos Práticos</h3>
-                        <p class="text-gray-400">Exemplos reais e projetos práticos para fixar o conhecimento.</p>
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">Primeiros Passos com Segurança</h3>
+                        <p class="text-gray-400">Saiba por onde começar, como estudar com consistência e estruturar sua rotina de aprendizado sem se perder.</p>
                     </div>
                 </div>
             </div>

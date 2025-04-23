@@ -18,6 +18,7 @@ class Education extends Model
         'start_month',
         'end_month',
         'description',
+        'order'
     ];
 
 
