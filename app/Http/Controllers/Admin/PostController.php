@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Stevebauman\Purify\Facades\Purify;
 
 class PostController extends Controller
 {
@@ -37,6 +38,9 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
         ]);
+
+        // Sanitiza o conteúdo do post
+        $validated['content'] = Purify::clean($validated['content']);
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
@@ -76,6 +80,9 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
         ]);
+
+        // Sanitiza o conteúdo do post
+        $validated['content'] = Purify::clean($validated['content']);
 
         if ($request->hasFile('image')) {
             // Delete old image if exists

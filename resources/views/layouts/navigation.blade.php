@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('ebook')" :active="request()->routeIs('ebook')">
                         {{ __('Ebook') }}
                     </x-nav-link>
+                    <li>
+                        <a href="{{ route('mentoria.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mentoria</a>
+                    </li>
+                    <x-nav-link :href="route('mentoria.index')" :active="request()->routeIs('mentoria.index')">
+                        {{ __('Mentoria') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -87,6 +93,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('ebook')" :active="request()->routeIs('ebook')">
                 {{ __('Ebook') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('mentoria.index')" :active="request()->routeIs('mentoria.index')">
+                {{ __('Mentoria') }}
             </x-responsive-nav-link>
         </div>
 

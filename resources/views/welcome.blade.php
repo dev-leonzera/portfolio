@@ -12,10 +12,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Embedded Styles (Minimal) -->
-        <style>
+            <style>
             html {
                 scroll-behavior: smooth; /* Smooth scrolling for anchor links */
             }
@@ -48,7 +48,7 @@
             ::-webkit-scrollbar-thumb:hover {
                 background: #FBBF24; /* Amber accent */
             }
-        </style>
+            </style>
         <!-- Alpine.js -->
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
@@ -74,6 +74,7 @@
                             <a href="#resume" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Currículo</a>
                             <a href="#contact" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Contato</a>
                             <a href="{{ route('ebook') }}" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Ebook</a>
+                            <a href="{{ route('mentoria.index') }}" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Mentoria</a>
                         </nav>                    
 
                         <!-- Mobile Menu Button -->
@@ -293,7 +294,7 @@
                                             {{ \Carbon\Carbon::createFromDate($education->year_start, 1, 1)->format('Y') }}
                                             @if($education->year_end)
                                                 - {{ \Carbon\Carbon::createFromDate($education->year_end, 1, 1)->format('Y') }}
-                                            @endif
+                                    @endif
                                         </p>
                                         <h4 class="text-base sm:text-lg font-semibold text-white mb-1">{{ $education->degree }}</h4>
                                         <p class="text-amber-500 text-xs sm:text-sm font-medium mb-2">{{ $education->university }}</p>
@@ -301,14 +302,14 @@
                                             <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                                                 {{ $education->description }}
                                             </p>
-                                        @endif
+                        @endif
                                     </div>
                                 @empty
                                     <p class="text-gray-400 text-sm">Nenhum histórico educacional disponível.</p>
                                 @endforelse
-                            </div>
-                        </div>
-                        
+                                </div>
+                                        </div>
+
                         <div>
                             <h3 class="text-xl sm:text-2xl font-semibold text-white mb-6">Experiência Profissional</h3>
                             <div class="space-y-5">
@@ -333,6 +334,57 @@
                                 @empty
                                     <p class="text-gray-400 text-sm">Nenhuma experiência profissional disponível.</p>
                                 @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ebook Section -->
+            <section class="bg-[#0D1117] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="text-center mb-12 md:mb-16">
+                        <h2 class="text-sm font-medium uppercase tracking-widest text-amber-400 mb-2">Ebook</h2>
+                        <p class="text-3xl md:text-4xl font-bold text-white">Desbravando o Código</p>
+                        <div class="w-16 h-1 bg-amber-400 mx-auto mt-3"></div>
+                                </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-4">Comece Sua Jornada na Programação</h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed">
+                                Um guia completo para quem está começando no mundo da programação. Aprenda os conceitos fundamentais, lógica de programação e dê os primeiros passos para se tornar um desenvolvedor.
+                            </p>
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span class="text-sm">Conceitos básicos explicados de forma clara e objetiva</span>
+                                </li>
+                                <li class="flex items-start text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span class="text-sm">Exercícios práticos para fixar o aprendizado</span>
+                                </li>
+                                <li class="flex items-start text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mt-1 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span class="text-sm">Guia passo a passo para iniciar na programação</span>
+                                </li>
+                            </ul>
+                            <a href="{{ route('ebook') }}" class="inline-block bg-amber-400 text-gray-900 font-semibold py-3 px-8 rounded hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0D1117] focus:ring-amber-400 transition duration-300 text-sm uppercase tracking-wider">
+                                Saiba Mais Sobre o Ebook
+                            </a>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="relative">
+                                <div class="absolute -inset-1 bg-amber-400 rounded-lg blur opacity-25"></div>
+                                <div class="relative bg-[#161B22] p-6 rounded-lg shadow-xl">
+                                    <img src="{{ asset('img/book-cover.png') }}" alt="Capa do Ebook" class="w-full h-auto rounded shadow-lg">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -400,7 +452,7 @@
                                         <span class="text-sm">Natal, Rio Grande do Norte</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="flex space-x-4 mt-6">
                                     <a href="https://github.com/dev-leonzera" target="_blank" class="text-gray-400 hover:text-amber-400 transition duration-300">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -410,7 +462,6 @@
                                     <a href="https://www.linkedin.com/in/leonandrade" target="_blank" class="text-gray-400 hover:text-amber-400 transition duration-300">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                        </svg>
                                     </a>
                                     <a href="https://wa.me/5584996667335" target="_blank" class="text-gray-400 hover:text-amber-400 transition duration-300">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -419,8 +470,8 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                        
+                                </div>
+
                         <div class="bg-[#0D1117] p-5 sm:p-6 rounded-lg">
                             <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 sm:space-y-5">
                                 @csrf

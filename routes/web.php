@@ -11,12 +11,15 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Models\Skill;
 use App\Models\Experience;
+use App\Http\Controllers\MentoriaController;
 use Illuminate\Support\Facades\Route;
 
 // Rotas públicas
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/ebook', [EbookController::class, 'index'])->name('ebook');
+
+Route::get('/metodo-com-proposito', [MentoriaController::class, 'index'])->name('mentoria.index');
 
 // Rotas autenticadas (painel admin)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
