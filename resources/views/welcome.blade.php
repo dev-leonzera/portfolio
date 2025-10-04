@@ -4,7 +4,60 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Leonardo Andrade - Desenvolvedor de Software</title>
+        <title>Leonardo Andrade - Desenvolvedor de Software | Desenvolvimento Web Full-Stack</title>
+        <meta name="description" content="Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack. Soluções personalizadas, código limpo e arquiteturas escaláveis.">
+        <meta name="keywords" content="desenvolvedor, software, PHP, Laravel, Vue.js, full-stack, web development, programação, desenvolvimento">
+        <meta name="author" content="Leonardo Andrade">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('/') }}">
+        <meta property="og:title" content="Leonardo Andrade - Desenvolvedor de Software">
+        <meta property="og:description" content="Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack. Soluções personalizadas, código limpo e arquiteturas escaláveis.">
+        <meta property="og:image" content="{{ asset('img/1615292283182.jpg') }}">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url('/') }}">
+        <meta property="twitter:title" content="Leonardo Andrade - Desenvolvedor de Software">
+        <meta property="twitter:description" content="Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack. Soluções personalizadas, código limpo e arquiteturas escaláveis.">
+        <meta property="twitter:image" content="{{ asset('img/1615292283182.jpg') }}">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ url('/') }}">
+        
+        <!-- Schema.org markup for SEO -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Leonardo Andrade",
+            "jobTitle": "Desenvolvedor de Software",
+            "description": "Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack",
+            "url": "{{ url('/') }}",
+            "image": "{{ asset('img/1615292283182.jpg') }}",
+            "email": "leonandrade22@gmail.com",
+            "telephone": "+55-84-99666-7335",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Natal",
+                "addressRegion": "Rio Grande do Norte",
+                "addressCountry": "BR"
+            },
+            "sameAs": [
+                "https://github.com/dev-leonzera",
+                "https://www.linkedin.com/in/leonandrade"
+            ],
+            "knowsAbout": [
+                "PHP",
+                "Laravel",
+                "Vue.js",
+                "JavaScript",
+                "Desenvolvimento Web",
+                "Full-Stack Development"
+            ]
+        }
+        </script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +79,7 @@
             }
             .hero-bg {
                 /* Replace with your actual background image */
-                background-image: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 0.7)), url('https://via.placeholder.com/1920x800/161B22/C9D1D9?text=Mountain+Background'); /* Added overlay */
+                background-image: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 0.7)), url('https://via.placeholder.com/1920x800/161B22/C9D1D9?text=Mountain%20Background'); /* Added overlay */
                 background-size: cover;
                 background-position: center;
             }
@@ -48,9 +101,112 @@
             ::-webkit-scrollbar-thumb:hover {
                 background: #FBBF24; /* Amber accent */
             }
+            
+            /* Smooth animations */
+            .fade-in {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.6s ease-out;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .slide-in-left {
+                opacity: 0;
+                transform: translateX(-50px);
+                transition: all 0.6s ease-out;
+            }
+            .slide-in-left.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .slide-in-right {
+                opacity: 0;
+                transform: translateX(50px);
+                transition: all 0.6s ease-out;
+            }
+            .slide-in-right.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .scale-in {
+                opacity: 0;
+                transform: scale(0.8);
+                transition: all 0.6s ease-out;
+            }
+            .scale-in.visible {
+                opacity: 1;
+                transform: scale(1);
+            }
+            
+            /* Counter animation */
+            .counter {
+                font-variant-numeric: tabular-nums;
+            }
             </style>
         <!-- Alpine.js -->
         <script src="//unpkg.com/alpinejs" defer></script>
+        
+        <!-- Animation Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Intersection Observer for animations
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+                
+                // Observe all animated elements
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+                    observer.observe(el);
+                });
+                
+                // Counter animation
+                function animateCounter(element, target, duration = 2000) {
+                    let start = 0;
+                    const increment = target / (duration / 16);
+                    
+                    function updateCounter() {
+                        start += increment;
+                        if (start < target) {
+                            element.textContent = Math.floor(start);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            element.textContent = target;
+                        }
+                    }
+                    updateCounter();
+                }
+                
+                // Animate counters when they come into view
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target;
+                            const target = parseInt(counter.textContent);
+                            animateCounter(counter, target);
+                            counterObserver.unobserve(counter);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                document.querySelectorAll('.counter').forEach(counter => {
+                    counterObserver.observe(counter);
+                });
+            });
+        </script>
     </head>
     <body class="antialiased">
         @php
@@ -71,10 +227,11 @@
                             <a href="#" class="text-amber-400 border-b-2 border-amber-400 pb-1">Início</a>
                             <a href="#about" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Sobre</a>
                             <a href="#services" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Serviços</a>
+                            <a href="#projects" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Projetos</a>
+                            <a href="#blog" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Blog</a>
                             <a href="#resume" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Currículo</a>
                             <a href="#contact" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Contato</a>
                             <a href="{{ route('ebook') }}" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Ebook</a>
-                            <a href="{{ route('mentoria.index') }}" class="pb-1 border-b-2 border-transparent hover:text-amber-400 hover:border-amber-400 transition duration-300">Mentoria</a>
                         </nav>                    
 
                         <!-- Mobile Menu Button -->
@@ -93,6 +250,8 @@
                         <a href="#" class="block py-2.5 px-4 text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Início</a>
                         <a href="#about" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Sobre</a>
                         <a href="#services" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Serviços</a>
+                        <a href="#projects" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Projetos</a>
+                        <a href="#blog" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Blog</a>
                         <a href="#resume" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Currículo</a>
                         <a href="#contact" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Contato</a>
                         <a href="{{ route('ebook') }}" class="block py-2.5 px-4 text-gray-300 hover:text-amber-400 hover:bg-[#161B22] rounded-lg transition duration-300">Ebook</a>
@@ -102,11 +261,19 @@
 
             <!-- Hero Section -->
             <section id="home" class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pt-16">
-                <img src="{{ asset('img/hero-image.png') }}" alt="Leonardo Andrade" class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full border-4 border-amber-400 mb-6 shadow-lg">
+                <img src="{{ asset('img/1615292283182.jpg') }}" alt="Leonardo Andrade, desenvolvedor de software, foto de perfil" class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full border-4 border-amber-400 mb-6 shadow-lg object-cover">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">Olá, eu sou Leonardo Andrade</h1>
                 <p class="text-sm sm:text-base md:text-lg text-gray-300 mb-8 max-w-xl md:max-w-2xl px-4 sm:px-0">
                     Eu sou um desenvolvedor de software com visão sistêmica, foco em clareza de código e soluções pensadas para durar. Conecto propósito, estratégia e prática no que construo.
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                    <a href="#contact" class="inline-block bg-amber-400 text-gray-900 font-semibold py-3 px-8 rounded hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0D1117] focus:ring-amber-400 transition duration-300 text-sm uppercase tracking-wider">
+                        Vamos Trabalhar Juntos
+                    </a>
+                    <a href="#about" class="inline-block border-2 border-amber-400 text-amber-400 font-semibold py-3 px-8 rounded hover:bg-amber-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0D1117] focus:ring-amber-400 transition duration-300 text-sm uppercase tracking-wider">
+                        Conhecer Mais
+                    </a>
+                </div>
                 <div class="social-icons flex space-x-5">
                     <a href="https://github.com/dev-leonzera" target="_blank" aria-label="GitHub" class="text-gray-400 hover:text-amber-400 transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/> </svg>
@@ -114,6 +281,30 @@
                     <a href="https://www.linkedin.com/in/leonandrade" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-amber-400 transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"> <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/> </svg>
                     </a>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="bg-[#161B22] py-12 px-4 sm:px-6 lg:px-8">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div class="space-y-2 fade-in">
+                            <div class="text-3xl md:text-4xl font-bold text-amber-400 counter">5</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Anos de Experiência</div>
+                        </div>
+                        <div class="space-y-2 fade-in">
+                            <div class="text-3xl md:text-4xl font-bold text-amber-400 counter">50</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Projetos Concluídos</div>
+                        </div>
+                        <div class="space-y-2 fade-in">
+                            <div class="text-3xl md:text-4xl font-bold text-amber-400">100%</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Satisfação do Cliente</div>
+                        </div>
+                        <div class="space-y-2 fade-in">
+                            <div class="text-3xl md:text-4xl font-bold text-amber-400">24/7</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Suporte Disponível</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -127,11 +318,11 @@
                     </div>
 
                     <div class="grid md:grid-cols-5 gap-10 lg:gap-16 items-center">
-                        <div class="md:col-span-2 flex justify-center md:justify-start">
-                            <img src="{{ asset('img/about-image.png') }}" alt="Leonardo Andrade" class="rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm object-cover">
+                        <div class="md:col-span-2 flex justify-center md:justify-start slide-in-left">
+                            <img src="{{ asset('img/about-image.png') }}" alt="Leonardo Andrade trabalhando em desenvolvimento de software" class="rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm object-cover">
                         </div>
 
-                        <div class="md:col-span-3">
+                        <div class="md:col-span-3 slide-in-right">
                             <h3 class="text-2xl md:text-3xl font-semibold text-white mb-3">Olá! Eu sou Leonardo Andrade</h3>
                             <p class="text-amber-400 font-medium mb-5">Desenvolvedor de Software</p>
                             <p class="text-gray-400 mb-8 leading-relaxed">
@@ -225,23 +416,74 @@
                             </p>
                         </div>
 
-                         <div class="bg-[#0D1117] p-4 sm:p-6 md:p-8 rounded-lg text-center transition duration-300 hover:bg-[#21262d] hover:shadow-lg">
-                             <div class="inline-block text-amber-400 mb-4 sm:mb-5">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 sm:h-10 sm:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="bg-[#0D1117] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="text-center mb-12 md:mb-16">
+                        <h2 class="text-sm font-medium uppercase tracking-widest text-amber-400 mb-2">Projetos</h2>
+                        <p class="text-3xl md:text-4xl font-bold text-white">Alguns dos Meus Trabalhos</p>
+                        <div class="w-16 h-1 bg-amber-400 mx-auto mt-3"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @forelse ($projects as $project)
+                            <div class="bg-[#161B22] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 group">
+                                @if($project->image)
+                                    <div class="aspect-w-16 aspect-h-9 bg-gray-800">
+                                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+                                    </div>
+                                @endif
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-white mb-2">{{ $project->title }}</h3>
+                                    <p class="text-gray-400 text-sm mb-4">{{ Str::limit($project->description, 120) }}</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        @if($project->technologies)
+                                            @if(is_array($project->technologies))
+                                                @foreach($project->technologies as $tech)
+                                                    <span class="px-2 py-1 bg-amber-400 bg-opacity-20 text-amber-400 text-xs rounded">{{ $tech }}</span>
+                                                @endforeach
+                                            @else
+                                                @foreach(explode(',', $project->technologies) as $tech)
+                                                    <span class="px-2 py-1 bg-amber-400 bg-opacity-20 text-amber-400 text-xs rounded">{{ trim($tech) }}</span>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    </div>
+                                    <div class="flex gap-2">
+                                        @if($project->project_link)
+                                            <a href="{{ $project->project_link }}" target="_blank" class="inline-flex items-center text-amber-400 hover:text-amber-300 text-sm font-medium">
+                                                Ver Projeto
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                </svg>
+                                            </a>
+                                        @endif
+                                        @if($project->github_link)
+                                            <a href="{{ $project->github_link }}" target="_blank" class="inline-flex items-center text-gray-400 hover:text-gray-300 text-sm font-medium">
+                                                GitHub
+                                                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                  </svg>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
                              </div>
-                             <h3 class="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Mentoria Técnica</h3>
-                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                                Ajudo desenvolvedores a evoluírem na prática com orientação estratégica, revisão de código e foco em clareza e autonomia.
-                            </p>
+                        @empty
+                            <div class="col-span-full text-center py-12">
+                                <p class="text-gray-400">Nenhum projeto disponível no momento.</p>
                         </div>
+                        @endforelse
                     </div>
                 </div>
             </section>
 
             <!-- My Skills Section -->
-            <section id="skills" class="bg-[#0D1117] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+            <section id="skills" class="bg-[#161B22] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
                 <div class="container mx-auto max-w-7xl">
                     <div class="text-center mb-12 md:mb-16">
                         <h2 class="text-sm font-medium uppercase tracking-widest text-amber-400 mb-2">Habilidades</h2>
@@ -340,6 +582,109 @@
                 </div>
             </section>
 
+            <!-- Testimonials Section -->
+            <section class="bg-[#161B22] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="text-center mb-12 md:mb-16">
+                        <h2 class="text-sm font-medium uppercase tracking-widest text-amber-400 mb-2">Depoimentos</h2>
+                        <p class="text-3xl md:text-4xl font-bold text-white">O Que Dizem Sobre Meu Trabalho</p>
+                        <div class="w-16 h-1 bg-amber-400 mx-auto mt-3"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-[#0D1117] p-6 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-amber-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4 italic">"Leonardo desenvolveu um sistema completo para nossa empresa. O código é limpo, bem documentado e a entrega foi dentro do prazo. Recomendo!"</p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">M</div>
+                                <div class="ml-3">
+                                    <p class="text-white font-semibold">Maria Silva</p>
+                                    <p class="text-gray-400 text-sm">CEO, TechCorp</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0D1117] p-6 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-amber-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4 italic">"Excelente profissional! Entregou exatamente o que prometeu, com qualidade superior e atenção aos detalhes. O projeto ficou incrível!"</p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">J</div>
+                                <div class="ml-3">
+                                    <p class="text-white font-semibold">João Santos</p>
+                                    <p class="text-gray-400 text-sm">Diretor, StartupXYZ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0D1117] p-6 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-amber-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4 italic">"Leonardo transformou nossa ideia em realidade. Sua expertise técnica e visão estratégica foram fundamentais para o sucesso do projeto."</p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">A</div>
+                                <div class="ml-3">
+                                    <p class="text-white font-semibold">Ana Costa</p>
+                                    <p class="text-gray-400 text-sm">Fundadora, Inovatec</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Ebook Section -->
             <section class="bg-[#0D1117] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
                 <div class="container mx-auto max-w-7xl">
@@ -387,6 +732,49 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog" class="bg-[#161B22] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="text-center mb-12 md:mb-16">
+                        <h2 class="text-sm font-medium uppercase tracking-widest text-amber-400 mb-2">Blog</h2>
+                        <p class="text-3xl md:text-4xl font-bold text-white">Últimos Artigos</p>
+                        <div class="w-16 h-1 bg-amber-400 mx-auto mt-3"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @forelse ($posts as $post)
+                            <article class="bg-[#0D1117] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 group">
+                                @if($post->image)
+                                    <div class="aspect-w-16 aspect-h-9 bg-gray-800">
+                                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+                                    </div>
+                                @endif
+                                <div class="p-6">
+                                    <div class="flex items-center text-sm text-gray-400 mb-3">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                        {{ $post->published_at ? \Carbon\Carbon::parse($post->published_at)->format('d/m/Y') : 'Em breve' }}
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-amber-400 transition duration-300">{{ $post->title }}</h3>
+                                    <p class="text-gray-400 text-sm mb-4">{{ Str::limit(strip_tags($post->content), 120) }}</p>
+                                    <a href="#" class="inline-flex items-center text-amber-400 hover:text-amber-300 text-sm font-medium">
+                                        Ler mais
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                        @empty
+                            <div class="col-span-full text-center py-12">
+                                <p class="text-gray-400">Nenhum artigo disponível no momento.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </section>
@@ -564,6 +952,7 @@
                             <ul class="space-y-2">
                                 <li><a href="#about" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Sobre</a></li>
                                 <li><a href="#services" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Serviços</a></li>
+                                <li><a href="#projects" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Projetos</a></li>
                                 <li><a href="#skills" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Habilidades</a></li>
                                 <li><a href="#resume" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Experiência</a></li>
                                 <li><a href="#contact" class="text-gray-400 hover:text-amber-400 transition duration-300 text-sm">Contato</a></li>
