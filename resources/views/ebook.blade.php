@@ -334,7 +334,7 @@
                         <a href="https://github.com/dev-leonzera" target="_blank" class="text-gray-400 hover:text-amber-400 text-sm">GitHub</a>
                         <a href="https://www.linkedin.com/in/leonandrade" target="_blank" class="text-gray-400 hover:text-amber-400 text-sm">LinkedIn</a>
                     </div>
-                    <p class="text-gray-500 text-xs">&copy; {{ date('Y') }} Leonardo Andrade. Todos os direitos reservados.</p>
+                    <p class="text-gray-500 text-xs">&copy; {{ date('Y') }} DevLeonzera. Todos os direitos reservados.</p>
                     <p class="text-gray-500 text-xs mt-2">🔒 Pagamento 100% seguro via Hotmart</p>
                 </div>
             </div>

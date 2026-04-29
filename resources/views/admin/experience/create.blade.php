@@ -1,138 +1,107 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Adicionar Experiência Profissional') }}
-        </h2>
+        Nova Experiência
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <form action="{{ route('admin.experiences.store') }}" method="POST">
-                        @csrf
+    <div class="max-w-4xl">
+        <div class="glass-card p-10">
+            <form action="{{ route('admin.experiences.store') }}" method="POST" class="space-y-8">
+                @csrf
+                
+                @if ($errors->any())
+                    <div class="glass-card border-red-500/30 p-4 mb-8">
+                        <ul class="list-disc list-inside text-red-500 text-[10px] uppercase font-bold tracking-widest space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Cargo -->
-                            <div class="md:col-span-2">
-                                <label for="position" class="form-label">Cargo</label>
-                                <input type="text" name="position" id="position" class="form-input" required>
-                                @error('position')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="position" class="form-label-premium">Cargo / Título</label>
+                        <input type="text" name="position" id="position" class="form-input-premium" value="{{ old('position') }}" placeholder="Ex: Desenvolvedor Senior" required>
+                        @error('position')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                            <!-- Empresa -->
-                            <div class="md:col-span-2">
-                                <label for="company" class="form-label">Empresa</label>
-                                <input type="text" name="company" id="company" class="form-input" required>
-                                @error('company')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <!-- Descrição -->
-                            <div class="md:col-span-2">
-                                <label for="description" class="form-label">Descrição</label>
-                                <textarea name="description" id="description" rows="4" class="form-input"></textarea>
-                                @error('description')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <!-- Início -->
-                            <div>
-                                <label class="form-label">Data de Início</label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="start_month" class="block text-sm text-gray-600">Mês</label>
-                                        <select name="start_month" id="start_month" class="form-input" required>
-                                            <option value="">Selecione</option>
-                                            <option value="01">Janeiro</option>
-                                            <option value="02">Fevereiro</option>
-                                            <option value="03">Março</option>
-                                            <option value="04">Abril</option>
-                                            <option value="05">Maio</option>
-                                            <option value="06">Junho</option>
-                                            <option value="07">Julho</option>
-                                            <option value="08">Agosto</option>
-                                            <option value="09">Setembro</option>
-                                            <option value="10">Outubro</option>
-                                            <option value="11">Novembro</option>
-                                            <option value="12">Dezembro</option>
-                                        </select>
-                                        @error('start_month')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <label for="start_year" class="block text-sm text-gray-600">Ano</label>
-                                        <input type="number" name="year_start" id="start_year" class="form-input" required min="1900" max="2100">
-                                        @error('year_start')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Término -->
-                            <div>
-                                <label class="form-label">Data de Término</label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="end_month" class="block text-sm text-gray-600">Mês</label>
-                                        <select name="end_month" id="end_month" class="form-input">
-                                            <option value="">Selecione</option>
-                                            <option value="01">Janeiro</option>
-                                            <option value="02">Fevereiro</option>
-                                            <option value="03">Março</option>
-                                            <option value="04">Abril</option>
-                                            <option value="05">Maio</option>
-                                            <option value="06">Junho</option>
-                                            <option value="07">Julho</option>
-                                            <option value="08">Agosto</option>
-                                            <option value="09">Setembro</option>
-                                            <option value="10">Outubro</option>
-                                            <option value="11">Novembro</option>
-                                            <option value="12">Dezembro</option>
-                                        </select>
-                                        @error('end_month')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <label for="end_year" class="block text-sm text-gray-600">Ano</label>
-                                        <input type="number" name="year_end" id="end_year" class="form-input" min="1900" max="2100">
-                                        @error('year_end')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <p class="text-sm text-gray-500 mt-1">Deixe em branco se ainda estiver trabalhando</p>
-                            </div>
-
-                            <!-- Ordem -->
-                            <div>
-                                <label for="order" class="form-label">Ordem de Exibição</label>
-                                <input type="number" name="order" id="order" class="form-input" required>
-                                <p class="text-sm text-gray-500 mt-1">Número que define a ordem de exibição (menor = primeiro)</p>
-                                @error('order')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex justify-end mt-6">
-                            <a href="{{ route('admin.experiences.index') }}" class="btn-secondary mr-3">
-                                Cancelar
-                            </a>
-                            <button type="submit" class="btn-primary">
-                                Salvar Experiência
-                            </button>
-                        </div>
-                    </form>
+                    <div>
+                        <label for="company" class="form-label-premium">Empresa / Instituição</label>
+                        <input type="text" name="company" id="company" class="form-input-premium" value="{{ old('company') }}" placeholder="Ex: Google, Microsoft..." required>
+                        @error('company')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-            </div>
+
+                <div>
+                    <label for="description" class="form-label-premium">Descrição das Atividades</label>
+                    <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva suas responsabilidades e conquistas...">{{ old('description') }}</textarea>
+                    @error('description')
+                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Início -->
+                    <div class="space-y-4">
+                        <label class="form-label-premium">Período de Início</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <select name="start_month" id="start_month" class="form-input-premium py-3" required>
+                                    <option value="" class="bg-deep-black">Mês</option>
+                                    @foreach(['01'=>'Jan','02'=>'Fev','03'=>'Mar','04'=>'Abr','05'=>'Mai','06'=>'Jun','07'=>'Jul','08'=>'Ago','09'=>'Set','10'=>'Out','11'=>'Nov','12'=>'Dez'] as $val => $label)
+                                        <option value="{{ $val }}" {{ old('start_month') == $val ? 'selected' : '' }} class="bg-deep-black">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input type="number" name="year_start" id="start_year" class="form-input-premium py-3" value="{{ old('year_start', date('Y')) }}" required min="1900" max="2100" placeholder="Ano">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Término -->
+                    <div class="space-y-4">
+                        <label class="form-label-premium">Período de Término</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <select name="end_month" id="end_month" class="form-input-premium py-3">
+                                    <option value="" class="bg-deep-black">Mês (Atual)</option>
+                                    @foreach(['01'=>'Jan','02'=>'Fev','03'=>'Mar','04'=>'Abr','05'=>'Mai','06'=>'Jun','07'=>'Jul','08'=>'Ago','09'=>'Set','10'=>'Out','11'=>'Nov','12'=>'Dez'] as $val => $label)
+                                        <option value="{{ $val }}" {{ old('end_month') == $val ? 'selected' : '' }} class="bg-deep-black">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input type="number" name="year_end" id="end_year" class="form-input-premium py-3" value="{{ old('year_end') }}" min="1900" max="2100" placeholder="Ano">
+                            </div>
+                        </div>
+                        @error('end_date')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div>
+                    <label for="order" class="form-label-premium">Ordem de Exibição</label>
+                    <input type="number" name="order" id="order" class="form-input-premium" value="{{ old('order', 0) }}" min="0" required>
+                    @error('order')
+                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="flex items-center justify-between pt-6 border-t border-white/5">
+                    <a href="{{ route('admin.experiences.index') }}" class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">
+                        Cancelar
+                    </a>
+                    <button type="submit" class="btn-premium py-4 px-10 text-xs">
+                        Salvar Experiência
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-</x-admin-layout> 
+</x-admin-layout>

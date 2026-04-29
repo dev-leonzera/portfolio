@@ -10,80 +10,36 @@ class SkillSeeder extends Seeder
     public function run()
     {
         $skills = [
-            [
-                'name' => 'Laravel',
-                'order' => 1,
-                'icon' => 'laravel',
-                'description' => 'Framework PHP para desenvolvimento web',
-                'percentage' => 90
-            ],
-            [
-                'name' => 'PHP',
-                'order' => 2,
-                'icon' => 'php',
-                'description' => 'Linguagem de programação para web',
-                'percentage' => 95
-            ],
-            [
-                'name' => 'JavaScript',
-                'order' => 3,
-                'icon' => 'javascript',
-                'description' => 'Linguagem de programação para frontend',
-                'percentage' => 85
-            ],
-            [
-                'name' => 'Vue.js',
-                'order' => 4,
-                'icon' => 'vue',
-                'description' => 'Framework JavaScript para interfaces',
-                'percentage' => 80
-            ],
-            [
-                'name' => 'MySQL',
-                'order' => 5,
-                'icon' => 'mysql',
-                'description' => 'Sistema de gerenciamento de banco de dados',
-                'percentage' => 90
-            ],
-            [
-                'name' => 'HTML',
-                'order' => 6,
-                'icon' => 'html',
-                'description' => 'Linguagem de marcação para web',
-                'percentage' => 95
-            ],
-            [
-                'name' => 'CSS',
-                'order' => 7,
-                'icon' => 'css',
-                'description' => 'Linguagem de estilização para web',
-                'percentage' => 90
-            ],
-            [
-                'name' => 'Tailwind CSS',
-                'order' => 8,
-                'icon' => 'tailwind',
-                'description' => 'Framework CSS utilitário',
-                'percentage' => 85
-            ],
-            [
-                'name' => 'Git',
-                'order' => 9,
-                'icon' => 'git',
-                'description' => 'Sistema de controle de versão',
-                'percentage' => 90
-            ],
-            [
-                'name' => 'Docker',
-                'order' => 10,
-                'icon' => 'docker',
-                'description' => 'Plataforma de containerização',
-                'percentage' => 75
-            ]
+            // Linguagens
+            ['name' => 'PHP', 'category' => 'Linguagens', 'percentage' => 95, 'order' => 1],
+            ['name' => 'JavaScript', 'category' => 'Linguagens', 'percentage' => 85, 'order' => 2],
+            ['name' => 'TypeScript', 'category' => 'Linguagens', 'percentage' => 80, 'order' => 3],
+            ['name' => 'SQL', 'category' => 'Linguagens', 'percentage' => 90, 'order' => 4],
+            
+            // Frameworks
+            ['name' => 'Laravel', 'category' => 'Frameworks', 'percentage' => 95, 'order' => 5],
+            ['name' => 'Vue.js', 'category' => 'Frameworks', 'percentage' => 85, 'order' => 6],
+            ['name' => 'React', 'category' => 'Frameworks', 'percentage' => 70, 'order' => 7],
+            ['name' => 'Express', 'category' => 'Frameworks', 'percentage' => 60, 'order' => 8],
+            
+            // Banco de Dados
+            ['name' => 'MySQL', 'category' => 'Banco de Dados', 'percentage' => 90, 'order' => 9],
+            ['name' => 'PostgreSQL', 'category' => 'Banco de Dados', 'percentage' => 85, 'order' => 10],
+            ['name' => 'Redis', 'category' => 'Banco de Dados', 'percentage' => 75, 'order' => 11],
+            
+            // DevOps
+            ['name' => 'Docker', 'category' => 'DevOps', 'percentage' => 80, 'order' => 12],
+            ['name' => 'Git', 'category' => 'DevOps', 'percentage' => 95, 'order' => 13],
+            ['name' => 'Linux', 'category' => 'DevOps', 'percentage' => 85, 'order' => 14],
+            
+            // Soft Skills
+            ['name' => 'Liderança', 'category' => 'Soft Skills', 'percentage' => 90, 'order' => 15],
+            ['name' => 'Comunicação', 'category' => 'Soft Skills', 'percentage' => 95, 'order' => 16],
+            ['name' => 'Gestão de Tempo', 'category' => 'Soft Skills', 'percentage' => 85, 'order' => 17],
         ];
 
         foreach ($skills as $skill) {
             Skill::create($skill);
         }
     }
-} 
+}

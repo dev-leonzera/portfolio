@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Purify\Facades\Purify;
 
+use Illuminate\Support\Str;
+
 class PostController extends Controller
 {
     /**
@@ -41,6 +43,9 @@ class PostController extends Controller
 
         // Sanitiza o conteúdo do post
         $validated['content'] = Purify::clean($validated['content']);
+        
+        // Gera o slug
+        $validated['slug'] = Str::slug($validated['title']);
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
@@ -49,7 +54,7 @@ class PostController extends Controller
 
         Post::create($validated);
 
-        return redirect()->route('admin.post.index')
+        return redirect()->route('admin.posts.index')
             ->with('success', 'Post criado com sucesso!');
     }
 
@@ -83,6 +88,11 @@ class PostController extends Controller
 
         // Sanitiza o conteúdo do post
         $validated['content'] = Purify::clean($validated['content']);
+        
+        // Atualiza o slug se o título mudou
+        if ($post->title !== $validated['title']) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
@@ -95,7 +105,7 @@ class PostController extends Controller
 
         $post->update($validated);
 
-        return redirect()->route('admin.post.index')
+        return redirect()->route('admin.posts.index')
             ->with('success', 'Post atualizado com sucesso!');
     }
 
@@ -110,7 +120,7 @@ class PostController extends Controller
         
         $post->delete();
 
-        return redirect()->route('admin.post.index')
+        return redirect()->route('admin.posts.index')
             ->with('success', 'Post excluído com sucesso!');
     }
 } 

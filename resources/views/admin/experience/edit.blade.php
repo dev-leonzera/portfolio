@@ -1,139 +1,109 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar Experiência Profissional') }}
-        </h2>
+        Editar Experiência
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <form action="{{ route('admin.experiences.update', $experience) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+    <div class="max-w-4xl">
+        <div class="glass-card p-10">
+            <form action="{{ route('admin.experiences.update', $experience) }}" method="POST" class="space-y-8">
+                @csrf
+                @method('PUT')
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Cargo -->
-                            <div class="md:col-span-2">
-                                <label for="position" class="form-label">Cargo</label>
-                                <input type="text" name="position" id="position" class="form-input" value="{{ old('position', $experience->position) }}" required>
-                                @error('position')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
+                @if ($errors->any())
+                    <div class="glass-card border-red-500/30 p-4 mb-8">
+                        <ul class="list-disc list-inside text-red-500 text-[10px] uppercase font-bold tracking-widest space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                            <!-- Empresa -->
-                            <div class="md:col-span-2">
-                                <label for="company" class="form-label">Empresa</label>
-                                <input type="text" name="company" id="company" class="form-input" value="{{ old('company', $experience->company) }}" required>
-                                @error('company')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="position" class="form-label-premium">Cargo / Título</label>
+                        <input type="text" name="position" id="position" class="form-input-premium" value="{{ old('position', $experience->position) }}" placeholder="Ex: Desenvolvedor Senior" required>
+                        @error('position')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                            <!-- Descrição -->
-                            <div class="md:col-span-2">
-                                <label for="description" class="form-label">Descrição</label>
-                                <textarea name="description" id="description" rows="4" class="form-input">{{ old('description', $experience->description) }}</textarea>
-                                @error('description')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <!-- Início -->
-                            <div>
-                                <label class="form-label">Data de Início</label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="start_month" class="block text-sm text-gray-600">Mês</label>
-                                        <select name="start_month" id="start_month" class="form-input" required>
-                                            <option value="">Selecione</option>
-                                            <option value="01" {{ old('start_month', substr($experience->year_start, 5, 2)) == '01' ? 'selected' : '' }}>Janeiro</option>
-                                            <option value="02" {{ old('start_month', substr($experience->year_start, 5, 2)) == '02' ? 'selected' : '' }}>Fevereiro</option>
-                                            <option value="03" {{ old('start_month', substr($experience->year_start, 5, 2)) == '03' ? 'selected' : '' }}>Março</option>
-                                            <option value="04" {{ old('start_month', substr($experience->year_start, 5, 2)) == '04' ? 'selected' : '' }}>Abril</option>
-                                            <option value="05" {{ old('start_month', substr($experience->year_start, 5, 2)) == '05' ? 'selected' : '' }}>Maio</option>
-                                            <option value="06" {{ old('start_month', substr($experience->year_start, 5, 2)) == '06' ? 'selected' : '' }}>Junho</option>
-                                            <option value="07" {{ old('start_month', substr($experience->year_start, 5, 2)) == '07' ? 'selected' : '' }}>Julho</option>
-                                            <option value="08" {{ old('start_month', substr($experience->year_start, 5, 2)) == '08' ? 'selected' : '' }}>Agosto</option>
-                                            <option value="09" {{ old('start_month', substr($experience->year_start, 5, 2)) == '09' ? 'selected' : '' }}>Setembro</option>
-                                            <option value="10" {{ old('start_month', substr($experience->year_start, 5, 2)) == '10' ? 'selected' : '' }}>Outubro</option>
-                                            <option value="11" {{ old('start_month', substr($experience->year_start, 5, 2)) == '11' ? 'selected' : '' }}>Novembro</option>
-                                            <option value="12" {{ old('start_month', substr($experience->year_start, 5, 2)) == '12' ? 'selected' : '' }}>Dezembro</option>
-                                        </select>
-                                        @error('start_month')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <label for="start_year" class="block text-sm text-gray-600">Ano</label>
-                                        <input type="number" name="year_start" id="start_year" class="form-input" value="{{ old('year_start', substr($experience->year_start, 0, 4)) }}" required min="1900" max="2100">
-                                        @error('year_start')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Término -->
-                            <div>
-                                <label class="form-label">Data de Término</label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="end_month" class="block text-sm text-gray-600">Mês</label>
-                                        <select name="end_month" id="end_month" class="form-input">
-                                            <option value="">Selecione</option>
-                                            <option value="01" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '01' ? 'selected' : '' }}>Janeiro</option>
-                                            <option value="02" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '02' ? 'selected' : '' }}>Fevereiro</option>
-                                            <option value="03" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '03' ? 'selected' : '' }}>Março</option>
-                                            <option value="04" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '04' ? 'selected' : '' }}>Abril</option>
-                                            <option value="05" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '05' ? 'selected' : '' }}>Maio</option>
-                                            <option value="06" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '06' ? 'selected' : '' }}>Junho</option>
-                                            <option value="07" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '07' ? 'selected' : '' }}>Julho</option>
-                                            <option value="08" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '08' ? 'selected' : '' }}>Agosto</option>
-                                            <option value="09" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '09' ? 'selected' : '' }}>Setembro</option>
-                                            <option value="10" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '10' ? 'selected' : '' }}>Outubro</option>
-                                            <option value="11" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '11' ? 'selected' : '' }}>Novembro</option>
-                                            <option value="12" {{ old('end_month', $experience->year_end ? substr($experience->year_end, 5, 2) : '') == '12' ? 'selected' : '' }}>Dezembro</option>
-                                        </select>
-                                        @error('end_month')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <label for="end_year" class="block text-sm text-gray-600">Ano</label>
-                                        <input type="number" name="year_end" id="end_year" class="form-input" value="{{ old('year_end', $experience->year_end ? substr($experience->year_end, 0, 4) : '') }}" min="1900" max="2100">
-                                        @error('year_end')
-                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <p class="text-sm text-gray-500 mt-1">Deixe em branco se ainda estiver trabalhando</p>
-                            </div>
-
-                            <!-- Ordem -->
-                            <div>
-                                <label for="order" class="form-label">Ordem de Exibição</label>
-                                <input type="number" name="order" id="order" class="form-input" value="{{ old('order', $experience->order) }}" required>
-                                <p class="text-sm text-gray-500 mt-1">Número que define a ordem de exibição (menor = primeiro)</p>
-                                @error('order')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex justify-end mt-6">
-                            <a href="{{ route('admin.experiences.index') }}" class="btn-secondary mr-3">
-                                Cancelar
-                            </a>
-                            <button type="submit" class="btn-primary">
-                                Atualizar Experiência
-                            </button>
-                        </div>
-                    </form>
+                    <div>
+                        <label for="company" class="form-label-premium">Empresa / Instituição</label>
+                        <input type="text" name="company" id="company" class="form-input-premium" value="{{ old('company', $experience->company) }}" placeholder="Ex: Google, Microsoft..." required>
+                        @error('company')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-            </div>
+
+                <div>
+                    <label for="description" class="form-label-premium">Descrição das Atividades</label>
+                    <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva suas responsabilidades e conquistas...">{{ old('description', $experience->description) }}</textarea>
+                    @error('description')
+                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Início -->
+                    <div class="space-y-4">
+                        <label class="form-label-premium">Período de Início</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <select name="start_month" id="start_month" class="form-input-premium py-3" required>
+                                    @php $currentStartMonth = old('start_month', $experience->start_month); @endphp
+                                    @foreach(['01'=>'Jan','02'=>'Fev','03'=>'Mar','04'=>'Abr','05'=>'Mai','06'=>'Jun','07'=>'Jul','08'=>'Ago','09'=>'Set','10'=>'Out','11'=>'Nov','12'=>'Dez'] as $val => $label)
+                                        <option value="{{ $val }}" {{ $currentStartMonth == $val ? 'selected' : '' }} class="bg-deep-black">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input type="number" name="year_start" id="start_year" class="form-input-premium py-3" value="{{ old('year_start', $experience->year_start) }}" required min="1900" max="2100" placeholder="Ano">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Término -->
+                    <div class="space-y-4">
+                        <label class="form-label-premium">Período de Término</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <select name="end_month" id="end_month" class="form-input-premium py-3">
+                                    <option value="" class="bg-deep-black">Atualmente</option>
+                                    @php $currentEndMonth = old('end_month', $experience->end_month); @endphp
+                                    @foreach(['01'=>'Jan','02'=>'Fev','03'=>'Mar','04'=>'Abr','05'=>'Mai','06'=>'Jun','07'=>'Jul','08'=>'Ago','09'=>'Set','10'=>'Out','11'=>'Nov','12'=>'Dez'] as $val => $label)
+                                        <option value="{{ $val }}" {{ $currentEndMonth == $val ? 'selected' : '' }} class="bg-deep-black">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input type="number" name="year_end" id="end_year" class="form-input-premium py-3" value="{{ old('year_end', $experience->year_end) }}" min="1900" max="2100" placeholder="Ano">
+                            </div>
+                        </div>
+                        @error('end_date')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div>
+                    <label for="order" class="form-label-premium">Ordem de Exibição</label>
+                    <input type="number" name="order" id="order" class="form-input-premium" value="{{ old('order', $experience->order) }}" min="0" required>
+                    @error('order')
+                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="flex items-center justify-between pt-6 border-t border-white/5">
+                    <a href="{{ route('admin.experiences.index') }}" class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">
+                        Cancelar
+                    </a>
+                    <button type="submit" class="btn-premium py-4 px-10 text-xs">
+                        Atualizar Experiência
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-</x-admin-layout> 
+</x-admin-layout>

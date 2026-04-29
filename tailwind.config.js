@@ -11,8 +11,18 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                'deep-black': '#050505',
+                'rich-black': '#0D1117',
+                'gold-accent': {
+                    'light': '#FCD34D',
+                    'DEFAULT': '#FBBF24',
+                    'dark': '#D97706',
+                },
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                outfit: ['Outfit', 'sans-serif'],
             },
         },
     },

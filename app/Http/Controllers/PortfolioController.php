@@ -26,7 +26,7 @@ class PortfolioController extends Controller
         $experiences = Experience::orderBy('order', 'asc')->get();  
 
 
-        return view('welcome', compact(
+        return view('portfolio.index', compact(
             'skills',
             'projects',
             'posts',
