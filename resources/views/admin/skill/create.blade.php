@@ -17,6 +17,15 @@
                 </div>
 
                 <div>
+                    <label for="icon" class="form-label-premium">Ícone (Slug ou URL)</label>
+                    <input type="text" name="icon" id="icon" class="form-input-premium" value="{{ old('icon') }}" placeholder="Ex: php, laravel, ou https://exemplo.com/icon.svg">
+                    <p class="text-[9px] text-gray-600 mt-2 ml-1 uppercase tracking-tighter">Use o slug do <a href="https://simpleicons.org/" target="_blank" class="text-gold-accent hover:underline">Simple Icons</a> ou uma URL direta para o ícone.</p>
+                    @error('icon')
+                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="category" class="form-label-premium">Categoria</label>
                     <input type="text" name="category" id="category" class="form-input-premium" value="{{ old('category') }}" placeholder="Ex: Linguagens, Frameworks, Soft Skills..." list="categories" required>
                     <datalist id="categories">

@@ -8,7 +8,7 @@
                 </p>
             </div>
             
-            <div class="flex flex-wrap justify-center gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
+            <div class="flex flex-wrap justify-center gap-8 text-xs uppercase font-bold tracking-[0.2em] text-gray-400">
                 <a href="#about" class="hover:text-gold-accent transition-colors">Sobre</a>
                 <a href="#services" class="hover:text-gold-accent transition-colors">Serviços</a>
                 <a href="#projects" class="hover:text-gold-accent transition-colors">Projetos</a>
@@ -27,11 +27,11 @@
         </div>
         
         <div class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">
+            <p class="text-[11px] text-gray-600 uppercase tracking-widest font-bold">
                 &copy; {{ date('Y') }} DevLeonzera. Todos os direitos reservados.
             </p>
-            <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">
-                Feito com Laravel & Tailwind
+            <p class="text-[11px] text-gray-600 uppercase tracking-widest font-bold">
+                Feito com ❤️ e ☕
             </p>
         </div>
     </div>

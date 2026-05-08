@@ -19,7 +19,14 @@ class PortfolioController extends Controller
     public function index()
     {
         // Fetch data from the database
-        $skills = Skill::orderBy('order', 'asc')->get();
+        $skills = Skill::orderByRaw("CASE 
+            WHEN category = 'Linguagens' THEN 1 
+            WHEN category = 'Frameworks' THEN 2 
+            WHEN category = 'Banco de Dados' THEN 3 
+            WHEN category = 'DevOps' THEN 4 
+            ELSE 5 END")
+            ->orderBy('order', 'asc')
+            ->get();
         $projects = Project::orderBy('order', 'asc')->get();
         $posts = Post::whereNotNull('published_at')->orderBy('published_at', 'desc')->take(3)->get();
         $educations = Education::orderBy('order', 'asc')->get();

@@ -5,7 +5,7 @@
                 <a href="#" class="text-white font-light group">Dev<span class="font-black text-white group-hover:text-gold-accent transition-colors duration-300">Leonzera</span><span class="text-gold-accent">.</span></a>
             </div>
 
-            <nav class="hidden md:flex items-center space-x-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
                 <a href="#" class="text-white transition duration-300">Início</a>
                 <a href="#about" class="hover:text-gold-accent transition duration-300">Sobre</a>
                 <a href="#services" class="hover:text-gold-accent transition duration-300">Serviços</a>
@@ -30,13 +30,13 @@
              x-transition:enter-start="opacity-0 -translate-y-2" 
              x-transition:enter-end="opacity-100 translate-y-0" 
              class="md:hidden mt-4 py-6 space-y-4 glass-card border-none text-center">
-            <a href="#" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gold-accent">Início</a>
-            <a href="#about" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300">Sobre</a>
-            <a href="#services" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300">Serviços</a>
-            <a href="#projects" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300">Projetos</a>
-            <a href="#resume" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300">Experiência</a>
-            <a href="#blog" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300">Blog</a>
-            <a href="#contact" @click="mobileMenuOpen = false" class="block text-xs font-bold uppercase tracking-widest text-gray-300 text-gold-accent">Contato</a>
+            <a href="#" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gold-accent">Início</a>
+            <a href="#about" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Sobre</a>
+            <a href="#services" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Serviços</a>
+            <a href="#projects" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Projetos</a>
+            <a href="#resume" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Experiência</a>
+            <a href="#blog" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Blog</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 text-gold-accent">Contato</a>
         </div>
     </div>
 </header>

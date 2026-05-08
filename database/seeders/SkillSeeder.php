@@ -11,35 +11,35 @@ class SkillSeeder extends Seeder
     {
         $skills = [
             // Linguagens
-            ['name' => 'PHP', 'category' => 'Linguagens', 'percentage' => 95, 'order' => 1],
-            ['name' => 'JavaScript', 'category' => 'Linguagens', 'percentage' => 85, 'order' => 2],
-            ['name' => 'TypeScript', 'category' => 'Linguagens', 'percentage' => 80, 'order' => 3],
-            ['name' => 'SQL', 'category' => 'Linguagens', 'percentage' => 90, 'order' => 4],
+            ['name' => 'PHP', 'category' => 'Linguagens', 'icon' => 'php', 'percentage' => 95, 'order' => 1],
+            ['name' => 'JavaScript', 'category' => 'Linguagens', 'icon' => 'javascript', 'percentage' => 85, 'order' => 2],
+            ['name' => 'TypeScript', 'category' => 'Linguagens', 'icon' => 'typescript', 'percentage' => 80, 'order' => 3],
+            ['name' => 'SQL', 'category' => 'Linguagens', 'icon' => 'sqlite', 'percentage' => 90, 'order' => 4],
             
             // Frameworks
-            ['name' => 'Laravel', 'category' => 'Frameworks', 'percentage' => 95, 'order' => 5],
-            ['name' => 'Vue.js', 'category' => 'Frameworks', 'percentage' => 85, 'order' => 6],
-            ['name' => 'React', 'category' => 'Frameworks', 'percentage' => 70, 'order' => 7],
-            ['name' => 'Express', 'category' => 'Frameworks', 'percentage' => 60, 'order' => 8],
+            ['name' => 'Laravel', 'category' => 'Frameworks', 'icon' => 'laravel', 'percentage' => 95, 'order' => 5],
+            ['name' => 'Vue.js', 'category' => 'Frameworks', 'icon' => 'vuedotjs', 'percentage' => 85, 'order' => 6],
+            ['name' => 'React', 'category' => 'Frameworks', 'icon' => 'react', 'percentage' => 70, 'order' => 7],
+            ['name' => 'Express', 'category' => 'Frameworks', 'icon' => 'express', 'percentage' => 60, 'order' => 8],
             
             // Banco de Dados
-            ['name' => 'MySQL', 'category' => 'Banco de Dados', 'percentage' => 90, 'order' => 9],
-            ['name' => 'PostgreSQL', 'category' => 'Banco de Dados', 'percentage' => 85, 'order' => 10],
-            ['name' => 'Redis', 'category' => 'Banco de Dados', 'percentage' => 75, 'order' => 11],
+            ['name' => 'MySQL', 'category' => 'Banco de Dados', 'icon' => 'mysql', 'percentage' => 90, 'order' => 9],
+            ['name' => 'PostgreSQL', 'category' => 'Banco de Dados', 'icon' => 'postgresql', 'percentage' => 85, 'order' => 10],
+            ['name' => 'Redis', 'category' => 'Banco de Dados', 'icon' => 'redis', 'percentage' => 75, 'order' => 11],
             
             // DevOps
-            ['name' => 'Docker', 'category' => 'DevOps', 'percentage' => 80, 'order' => 12],
-            ['name' => 'Git', 'category' => 'DevOps', 'percentage' => 95, 'order' => 13],
-            ['name' => 'Linux', 'category' => 'DevOps', 'percentage' => 85, 'order' => 14],
+            ['name' => 'Docker', 'category' => 'DevOps', 'icon' => 'docker', 'percentage' => 80, 'order' => 12],
+            ['name' => 'Git', 'category' => 'DevOps', 'icon' => 'git', 'percentage' => 95, 'order' => 13],
+            ['name' => 'Linux', 'category' => 'DevOps', 'icon' => 'linux', 'percentage' => 85, 'order' => 14],
             
             // Soft Skills
-            ['name' => 'Liderança', 'category' => 'Soft Skills', 'percentage' => 90, 'order' => 15],
-            ['name' => 'Comunicação', 'category' => 'Soft Skills', 'percentage' => 95, 'order' => 16],
-            ['name' => 'Gestão de Tempo', 'category' => 'Soft Skills', 'percentage' => 85, 'order' => 17],
+            ['name' => 'Liderança', 'category' => 'Soft Skills', 'icon' => 'users', 'percentage' => 90, 'order' => 15],
+            ['name' => 'Comunicação', 'category' => 'Soft Skills', 'icon' => 'message-square', 'percentage' => 95, 'order' => 16],
+            ['name' => 'Gestão de Tempo', 'category' => 'Soft Skills', 'icon' => 'clock', 'percentage' => 85, 'order' => 17],
         ];
 
         foreach ($skills as $skill) {
-            Skill::create($skill);
+            Skill::updateOrCreate(['name' => $skill['name']], $skill);
         }
     }
 }

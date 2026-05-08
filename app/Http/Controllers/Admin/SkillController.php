@@ -24,6 +24,7 @@ class SkillController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
+            'icon' => 'nullable|string|max:255',
             'percentage' => 'required|integer|min:0|max:100',
             'order' => 'required|integer|min:0',
         ]);
@@ -49,6 +50,7 @@ class SkillController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
+            'icon' => 'nullable|string|max:255',
             'percentage' => 'required|integer|min:0|max:100',
             'order' => 'required|integer|min:0',
         ]);
