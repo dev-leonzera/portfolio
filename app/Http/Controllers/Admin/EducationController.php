@@ -35,7 +35,7 @@ class EducationController extends Controller
             'degree' => 'required|string|max:255',
             'year_start' => 'required|integer|min:1900|max:' . (date('Y') + 1),
             'year_end' => 'nullable|integer|min:1900|max:' . (date('Y') + 1),
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'order' => 'required|integer|min:0',
         ]);
 
@@ -71,7 +71,7 @@ class EducationController extends Controller
             'degree' => 'required|string|max:255',
             'year_start' => 'required|integer|min:1900|max:' . (date('Y') + 1),
             'year_end' => 'nullable|integer|min:1900|max:' . (date('Y') + 1),
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'order' => 'required|integer|min:0',
         ]);
 

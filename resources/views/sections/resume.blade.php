@@ -25,9 +25,7 @@
                                 </span>
                                 <h4 class="text-xl font-bold text-white mb-2">{{ $education->degree }}</h4>
                                 <p class="text-gray-400 font-medium text-sm mb-4">{{ $education->university }}</p>
-                                @if($education->description)
-                                    <p class="text-gray-500 text-sm font-light leading-relaxed">{{ $education->description }}</p>
-                                @endif
+
                             </div>
                         </div>
                     @empty
