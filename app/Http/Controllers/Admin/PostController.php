@@ -52,6 +52,10 @@ class PostController extends Controller
             $validated['image'] = $path;
         }
 
+        if (isset($validated['published_at'])) {
+            $validated['published_at'] = \Illuminate\Support\Carbon::parse($validated['published_at'])->format('Y-m-d H:i:s');
+        }
+
         Post::create($validated);
 
         return redirect()->route('admin.posts.index')
@@ -101,6 +105,10 @@ class PostController extends Controller
             }
             $path = $request->file('image')->store('posts', 'public');
             $validated['image'] = $path;
+        }
+
+        if (isset($validated['published_at'])) {
+            $validated['published_at'] = \Illuminate\Support\Carbon::parse($validated['published_at'])->format('Y-m-d H:i:s');
         }
 
         $post->update($validated);

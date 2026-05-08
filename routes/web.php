@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/ebook', [EbookController::class, 'index'])->name('ebook');
+Route::get('/blog/{slug}', [PortfolioController::class, 'post'])->name('post.show');
 
 
 // Rotas autenticadas (painel admin)

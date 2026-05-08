@@ -31,21 +31,37 @@
             </div>
 
             <div class="reveal-right glass-card p-10">
+                @if(session('success'))
+                    <div class="mb-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                        <ul class="list-disc list-inside">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                     @csrf
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Nome</label>
-                            <input type="text" name="name" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300" placeholder="Seu Nome">
+                            <input type="text" name="name" value="{{ old('name') }}" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300" placeholder="Seu Nome">
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Email</label>
-                            <input type="email" name="email" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300" placeholder="seu@email.com">
+                            <input type="email" name="email" value="{{ old('email') }}" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300" placeholder="seu@email.com">
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Mensagem</label>
-                        <textarea name="message" rows="5" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300 resize-none" placeholder="Como posso ajudar?"></textarea>
+                        <textarea name="message" rows="5" required class="w-full bg-rich-black border border-white/5 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-gold-accent/50 transition duration-300 resize-none" placeholder="Como posso ajudar?">{{ old('message') }}</textarea>
                     </div>
                     <button type="submit" class="w-full btn-premium py-5">Enviar Mensagem</button>
                 </form>

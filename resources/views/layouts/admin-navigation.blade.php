@@ -38,6 +38,12 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <a href="{{ route('home') }}" target="_blank" class="inline-flex items-center px-4 py-2 border border-gold-accent/20 text-[10px] font-bold uppercase tracking-widest rounded-xl text-gold-accent bg-gold-accent/5 hover:bg-gold-accent/10 transition ease-in-out duration-150 me-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Ver Portfólio
+                </a>
                 <div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
                     <div @click="open = ! open">
                         <button class="inline-flex items-center px-4 py-2 border border-white/10 text-xs font-bold uppercase tracking-widest rounded-xl text-gray-300 bg-white/5 hover:bg-white/10 focus:outline-none transition ease-in-out duration-150">
@@ -101,6 +107,9 @@
                 {{ __('Projetos') }}
             </a>
             <!-- ... outros links ... -->
+            <a href="{{ route('home') }}" target="_blank" class="block w-full ps-3 pe-4 py-3 border-l-4 border-transparent text-gold-accent hover:bg-gold-accent/5 text-xs font-bold uppercase tracking-widest">
+                {{ __('Ver Portfólio') }}
+            </a>
         </div>
 
         <!-- Responsive Settings Options -->

@@ -2,17 +2,17 @@
      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         <div class="flex justify-between items-center">
             <div class="text-2xl tracking-tighter">
-                <a href="#" class="text-white font-light group">Dev<span class="font-black text-white group-hover:text-gold-accent transition-colors duration-300">Leonzera</span><span class="text-gold-accent">.</span></a>
+                <a href="{{ route('home') }}" class="text-white font-light group">Dev<span class="font-black text-white group-hover:text-gold-accent transition-colors duration-300">Leonzera</span><span class="text-gold-accent">.</span></a>
             </div>
 
             <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="#" class="text-white transition duration-300">Início</a>
-                <a href="#about" class="hover:text-gold-accent transition duration-300">Sobre</a>
-                <a href="#services" class="hover:text-gold-accent transition duration-300">Serviços</a>
-                <a href="#projects" class="hover:text-gold-accent transition duration-300">Projetos</a>
-                <a href="#resume" class="hover:text-gold-accent transition duration-300">Experiência</a>
-                <a href="#blog" class="hover:text-gold-accent transition duration-300">Blog</a>
-                <a href="#contact" class="hover:text-gold-accent transition duration-300">Contato</a>
+                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-white' : 'hover:text-gold-accent' }} transition duration-300">Início</a>
+                <a href="{{ route('home') }}#about" class="hover:text-gold-accent transition duration-300">Sobre</a>
+                <a href="{{ route('home') }}#services" class="hover:text-gold-accent transition duration-300">Serviços</a>
+                <a href="{{ route('home') }}#projects" class="hover:text-gold-accent transition duration-300">Projetos</a>
+                <a href="{{ route('home') }}#resume" class="hover:text-gold-accent transition duration-300">Experiência</a>
+                <a href="{{ route('home') }}#blog" class="hover:text-gold-accent transition duration-300">Blog</a>
+                <a href="{{ route('home') }}#contact" class="hover:text-gold-accent transition duration-300">Contato</a>
             </nav>                    
 
             <div class="md:hidden">
@@ -30,13 +30,13 @@
              x-transition:enter-start="opacity-0 -translate-y-2" 
              x-transition:enter-end="opacity-100 translate-y-0" 
              class="md:hidden mt-4 py-6 space-y-4 glass-card border-none text-center">
-            <a href="#" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gold-accent">Início</a>
-            <a href="#about" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Sobre</a>
-            <a href="#services" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Serviços</a>
-            <a href="#projects" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Projetos</a>
-            <a href="#resume" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Experiência</a>
-            <a href="#blog" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300">Blog</a>
-            <a href="#contact" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 text-gold-accent">Contato</a>
+            <a href="{{ route('home') }}" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest {{ request()->routeIs('home') ? 'text-gold-accent' : 'text-gray-300' }}">Início</a>
+            <a href="{{ route('home') }}#about" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Sobre</a>
+            <a href="{{ route('home') }}#services" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Serviços</a>
+            <a href="{{ route('home') }}#projects" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Projetos</a>
+            <a href="{{ route('home') }}#resume" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Experiência</a>
+            <a href="{{ route('home') }}#blog" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Blog</a>
+            <a href="{{ route('home') }}#contact" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Contato</a>
         </div>
     </div>
 </header>

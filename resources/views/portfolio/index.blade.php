@@ -3,13 +3,13 @@
 
     <main>
         @include('sections.hero')
-        @include('sections.stats')
+        <!-- @include('sections.stats') -->
         @include('sections.about')
         @include('sections.services')
         @include('sections.projects')
         @include('sections.skills')
         @include('sections.resume')
-        @include('sections.testimonials')
+        <!-- @include('sections.testimonials') -->
         <!-- @include('sections.ebook') -->
         @include('sections.blog')
         @include('sections.contact')

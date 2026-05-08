@@ -28,7 +28,11 @@ class PortfolioController extends Controller
             ->orderBy('order', 'asc')
             ->get();
         $projects = Project::orderBy('order', 'asc')->get();
-        $posts = Post::whereNotNull('published_at')->orderBy('published_at', 'desc')->take(3)->get();
+        $posts = Post::whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get();
         $educations = Education::orderBy('order', 'asc')->get();
         $experiences = Experience::orderBy('order', 'asc')->get();  
 
@@ -51,5 +55,20 @@ class PortfolioController extends Controller
     {
         // You might fetch ebook-specific data here later if needed
         return view('ebook');
+    }
+    /**
+     * Display a single blog post.
+     *
+     * @param string $slug
+     * @return \Illuminate\View\View
+     */
+    public function post($slug)
+    {
+        $post = Post::where('slug', $slug)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->firstOrFail();
+
+        return view('portfolio.post', compact('post'));
     }
 }
