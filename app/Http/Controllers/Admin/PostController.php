@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Purify\Facades\Purify;
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $categories = Category::all();
+        return view('admin.post.create', compact('categories'));
     }
 
     /**
@@ -41,6 +43,7 @@ class PostController extends Controller
             'content_en' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         // Sanitiza o conteúdo do post
@@ -80,7 +83,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -95,6 +99,7 @@ class PostController extends Controller
             'content_en' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         // Sanitiza o conteúdo do post
@@ -141,4 +146,17 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')
             ->with('success', 'Post excluído com sucesso!');
     }
-} 
+
+    /**
+     * Handle image upload from WYSIWYG editor.
+     */
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('editor', 'public');
+            return response()->json(['location' => asset('storage/' . $path)]);
+        }
+
+        return response()->json(['error' => 'No file uploaded'], 400);
+    }
+}

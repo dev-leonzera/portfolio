@@ -27,6 +27,7 @@
                         <tr class="border-b border-white/5">
                             <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-gray-500">Título</th>
                             <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-gray-500">Data de Publicação</th>
+                            <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-gray-500">Categoria</th>
                             <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-gray-500">Status</th>
                             <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-gray-500 text-right">Ações</th>
                         </tr>
@@ -51,6 +52,11 @@
                                 <td class="px-6 py-4">
                                     <span class="text-xs text-gray-400">
                                         {{ $post->published_at ? \Carbon\Carbon::parse($post->published_at)->format('d/m/Y H:i') : 'Rascunho' }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="bg-white/5 text-gray-500 text-[10px] px-2 py-1 rounded">
+                                        {{ $post->category ? $post->category->name : 'Nenhuma' }}
                                     </span>
                                 </td>
                                 <td class="px-6 py-4">

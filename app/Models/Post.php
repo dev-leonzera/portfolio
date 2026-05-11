@@ -11,12 +11,17 @@ class Post extends Model
     use Translatable;
 
     protected $fillable = [
-        'title', 'title_en', 'slug', 'content', 'content_en', 'excerpt', 'excerpt_en', 'image', 'published_at'
+        'title', 'title_en', 'slug', 'content', 'content_en', 'excerpt', 'excerpt_en', 'image', 'published_at', 'category_id'
     ];
 
     protected $casts = [
         'published_at' => 'datetime',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function getReadingTimeAttribute()
     {

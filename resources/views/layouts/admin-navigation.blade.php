@@ -30,6 +30,9 @@
                     <a href="{{ route('admin.posts.index') }}" class="text-[10px] uppercase tracking-widest font-bold {{ request()->routeIs('admin.posts.*') ? 'text-gold-accent' : 'text-gray-400 hover:text-white' }} transition-colors duration-300">
                         {{ __('Blog') }}
                     </a>
+                    <a href="{{ route('admin.categories.index') }}" class="text-[10px] uppercase tracking-widest font-bold {{ request()->routeIs('admin.categories.*') ? 'text-gold-accent' : 'text-gray-400 hover:text-white' }} transition-colors duration-300">
+                        {{ __('Categorias') }}
+                    </a>
                     <a href="{{ route('admin.contacts.index') }}" class="text-[10px] uppercase tracking-widest font-bold {{ request()->routeIs('admin.contacts.*') ? 'text-gold-accent' : 'text-gray-400 hover:text-white' }} transition-colors duration-300">
                         {{ __('Mensagens') }}
                     </a>
@@ -106,7 +109,21 @@
             <a href="{{ route('admin.projects.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.projects.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
                 {{ __('Projetos') }}
             </a>
-            <!-- ... outros links ... -->
+            <a href="{{ route('admin.experiences.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.experiences.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
+                {{ __('Experiências') }}
+            </a>
+            <a href="{{ route('admin.educations.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.educations.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
+                {{ __('Educação') }}
+            </a>
+            <a href="{{ route('admin.posts.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.posts.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
+                {{ __('Blog') }}
+            </a>
+            <a href="{{ route('admin.categories.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.categories.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
+                {{ __('Categorias') }}
+            </a>
+            <a href="{{ route('admin.contacts.index') }}" class="block w-full ps-3 pe-4 py-3 border-l-4 {{ request()->routeIs('admin.contacts.*') ? 'border-gold-accent text-gold-accent bg-white/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }} text-xs font-bold uppercase tracking-widest">
+                {{ __('Mensagens') }}
+            </a>
             <a href="{{ route('home') }}" target="_blank" class="block w-full ps-3 pe-4 py-3 border-l-4 border-transparent text-gold-accent hover:bg-gold-accent/5 text-xs font-bold uppercase tracking-widest">
                 {{ __('Ver Portfólio') }}
             </a>

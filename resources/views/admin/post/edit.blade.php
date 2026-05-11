@@ -27,10 +27,29 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 gap-8">
+                    <div>
+                        <label for="category_id" class="form-label-premium">Categoria</label>
+                        <select name="category_id" id="category_id" class="form-input-premium appearance-none bg-deep-black">
+                            <option value="">Sem Categoria</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="space-y-8">
                     <div>
                         <label for="content" class="form-label-premium">Conteúdo (PT)</label>
-                        <textarea name="content" id="content" rows="10" class="form-input-premium" placeholder="Escreva seu artigo aqui..." required>{{ old('content', $post->content) }}</textarea>
+                        <div class="editor-container dark-editor">
+                            <textarea name="content" id="content_editor">{{ old('content', $post->content) }}</textarea>
+                        </div>
                         @error('content')
                             <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
                         @enderror
@@ -38,7 +57,9 @@
 
                     <div>
                         <label for="content_en" class="form-label-premium">Content (EN)</label>
-                        <textarea name="content_en" id="content_en" rows="10" class="form-input-premium" placeholder="Write your article in English...">{{ old('content_en', $post->content_en) }}</textarea>
+                        <div class="editor-container dark-editor">
+                            <textarea name="content_en" id="content_en_editor">{{ old('content_en', $post->content_en) }}</textarea>
+                        </div>
                         @error('content_en')
                             <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
                         @enderror
@@ -91,4 +112,107 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+    <script>
+        class MyUploadAdapter {
+            constructor(loader) {
+                this.loader = loader;
+            }
+            upload() {
+                return this.loader.file.then(file => new Promise((resolve, reject) => {
+                    this._initRequest();
+                    this._initListeners(resolve, reject, file);
+                    this._sendRequest(file);
+                }));
+            }
+            abort() {
+                if (this.xhr) {
+                    this.xhr.abort();
+                }
+            }
+            _initRequest() {
+                const xhr = this.xhr = new XMLHttpRequest();
+                xhr.open('POST', '{{ route('admin.posts.upload') }}', true);
+                xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                xhr.responseType = 'json';
+            }
+            _initListeners(resolve, reject, file) {
+                const xhr = this.xhr;
+                const loader = this.loader;
+                const genericErrorText = `Couldn't upload file: ${file.name}.`;
+
+                xhr.addEventListener('error', () => reject(genericErrorText));
+                xhr.addEventListener('abort', () => reject());
+                xhr.addEventListener('load', () => {
+                    const response = xhr.response;
+                    if (!response || response.error) {
+                        return reject(response && response.error ? response.error.message : genericErrorText);
+                    }
+                    resolve({
+                        default: response.location
+                    });
+                });
+
+                if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', evt => {
+                        if (evt.lengthComputable) {
+                            loader.uploadTotal = evt.total;
+                            loader.uploaded = evt.loaded;
+                        }
+                    });
+                }
+            }
+            _sendRequest(file) {
+                const data = new FormData();
+                data.append('file', file);
+                this.xhr.send(data);
+            }
+        }
+
+        function MyCustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return new MyUploadAdapter(loader);
+            };
+        }
+
+        const editorConfig = {
+            extraPlugins: [MyCustomUploadAdapterPlugin],
+            toolbar: [
+                'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
+                'insertTable', 'imageUpload', 'undo', 'redo', 'codeBlock'
+            ]
+        };
+
+        ClassicEditor
+            .create(document.querySelector('#content_editor'), editorConfig)
+            .catch(error => { console.error(error); });
+
+        ClassicEditor
+            .create(document.querySelector('#content_en_editor'), editorConfig)
+            .catch(error => { console.error(error); });
+    </script>
+    <style>
+        .ck-editor__editable {
+            min-height: 400px;
+            background-color: #0A0A0A !important;
+            color: white !important;
+            border-bottom-left-radius: 0.75rem !important;
+            border-bottom-right-radius: 0.75rem !important;
+        }
+        .ck-toolbar {
+            background-color: #1A1A1A !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-top-left-radius: 0.75rem !important;
+            border-top-right-radius: 0.75rem !important;
+        }
+        .ck.ck-editor__main>.ck-editor__editable.ck-focused {
+            border-color: #FBBF24 !important;
+        }
+        .ck.ck-reset_all, .ck.ck-reset_all * {
+            color: #333 !important;
+        }
+    </style>
+    @endpush
 </x-admin-layout>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Models\Skill;
 use App\Models\Experience;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('experiences', ExperienceController::class);
     Route::resource('educations', EducationController::class);
     Route::resource('posts', PostController::class);
+    Route::post('posts/upload', [PostController::class, 'uploadImage'])->name('posts.upload');
+    Route::resource('categories', CategoryController::class);
     Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
 });
 

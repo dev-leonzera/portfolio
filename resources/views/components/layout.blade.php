@@ -119,11 +119,14 @@
         </script>
 
         {{ $head ?? '' }}
+        @stack('styles')
     </head>
     <body class="antialiased bg-deep-black text-white font-inter">
 
         <div class="relative overflow-x-hidden">
             {{ $slot }}
         </div>
+        
+        @stack('scripts')
     </body>
 </html>

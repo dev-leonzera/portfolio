@@ -15,10 +15,15 @@
                         </div>
                     @endif
                     <div class="p-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-gold-accent text-[10px] font-bold uppercase tracking-widest">
+                        <div class="flex flex-wrap gap-2 items-center mb-4">
+                            <span class="text-gold-accent text-[10px] font-bold uppercase tracking-widest mr-auto">
                                 {{ $post->published_at ? \Carbon\Carbon::parse($post->published_at)->translatedFormat('d M, Y') : __('messages.blog.soon') }}
                             </span>
+                            @if($post->category)
+                                <span class="bg-white/5 text-gray-400 text-[8px] px-2 py-1 rounded uppercase tracking-tighter font-bold">
+                                    {{ $post->category->t('name') }}
+                                </span>
+                            @endif
                             <span class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">
                                 {{ __('messages.blog.reading_time', ['time' => $post->reading_time]) }}
                             </span>
