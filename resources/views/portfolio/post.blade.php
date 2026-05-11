@@ -1,5 +1,6 @@
 <x-layout>
-    <x-slot name="title">{{ $post->title }} - DevLeonzera</x-slot>
+    <x-slot name="title">{{ $post->t('title') }} - DevLeonzera</x-slot>
+    <x-slot name="description">{{ $post->t('excerpt') }}</x-slot>
     
     @include('sections.header')
 
@@ -8,24 +9,24 @@
             <div class="reveal mb-12">
                 <a href="{{ route('home') }}#blog" class="inline-flex items-center text-gold-accent text-xs font-bold uppercase tracking-widest hover:text-white transition-colors mb-8 group">
                     <svg class="w-4 h-4 mr-2 group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    Voltar ao Blog
+                    {{ __('messages.blog.back') }}
                 </a>
                 
                 <span class="text-gold-accent text-xs font-bold uppercase tracking-[0.3em] block mb-4">
-                    {{ \Carbon\Carbon::parse($post->published_at)->format('d \d\e F, Y') }}
+                    {{ \Carbon\Carbon::parse($post->published_at)->translatedFormat('d M, Y') }}
                 </span>
-                <h1 class="text-4xl md:text-6xl font-bold text-white font-outfit leading-tight mb-8">{{ $post->title }}</h1>
+                <h1 class="text-4xl md:text-6xl font-bold text-white font-outfit leading-tight mb-8">{{ $post->t('title') }}</h1>
             </div>
 
             @if($post->image)
                 <div class="reveal mb-16 rounded-2xl overflow-hidden glass-card p-2">
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-auto rounded-xl">
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->t('title') }}" class="w-full h-auto rounded-xl">
                 </div>
             @endif
 
             <div class="reveal max-w-none">
                 <div class="text-gray-300 leading-relaxed text-lg space-y-6 font-light post-content">
-                    {!! $post->content !!}
+                    {!! $post->t('content') !!}
                 </div>
             </div>
 
@@ -44,11 +45,11 @@
             
             <div class="reveal mt-20 pt-10 border-t border-white/5">
                 <div class="glass-card p-8 md:p-12 text-center">
-                    <h3 class="text-2xl font-bold text-white mb-4 font-outfit">Gostou deste artigo?</h3>
-                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Siga-me nas redes sociais ou entre em contato para discutirmos mais sobre tecnologia e desenvolvimento.</p>
+                    <h3 class="text-2xl font-bold text-white mb-4 font-outfit">{{ __('messages.blog.cta_title') }}</h3>
+                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">{{ __('messages.blog.cta_description') }}</p>
                     <div class="flex justify-center gap-6">
                         <a href="{{ route('home') }}#contact" class="bg-gold-accent text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
-                            Entrar em Contato
+                            {{ __('messages.hero.cta_talk') }}
                         </a>
                     </div>
                 </div>

@@ -32,12 +32,14 @@ class ExperienceController extends Controller
     {
         $validated = $request->validate([
             'position' => 'required|string|max:255',
+            'position_en' => 'nullable|string|max:255',
             'company' => 'required|string|max:255',
             'year_start' => 'required|integer|min:1900|max:2100',
             'start_month' => 'required|string|size:2',
             'year_end' => 'nullable|integer|min:1900|max:2100',
             'end_month' => 'nullable|string|size:2',
             'description' => 'required|string',
+            'description_en' => 'nullable|string',
             'order' => 'required|integer|min:0',
         ]);
 
@@ -86,12 +88,14 @@ class ExperienceController extends Controller
     {
         $validated = $request->validate([
             'position' => 'required|string|max:255',
+            'position_en' => 'nullable|string|max:255',
             'company' => 'required|string|max:255',
             'year_start' => 'required|integer|min:1900|max:2100',
             'start_month' => 'required|string|size:2',
             'year_end' => 'nullable|integer|min:1900|max:2100',
             'end_month' => 'nullable|string|size:2',
             'description' => 'required|string',
+            'description_en' => 'nullable|string',
             'order' => 'required|integer|min:0',
         ]);
 

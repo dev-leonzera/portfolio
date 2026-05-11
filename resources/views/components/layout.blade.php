@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title ?? 'DevLeonzera - Arquiteto de Software & Desenvolvedor Full-Stack' }}</title>
-        <meta name="description" content="{{ $description ?? 'Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack.' }}">
+        <title>{{ $title ?? __('messages.nav.title') }}</title>
+        <meta name="description" content="{{ $description ?? __('messages.nav.meta_description') }}">
         
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ $title ?? 'DevLeonzera - Arquiteto de Software & Desenvolvedor Full-Stack' }}">
+        <meta property="og:title" content="{{ $title ?? __('messages.nav.title') }}">
         <meta property="og:image" content="{{ asset('img/about.jpg') }}">
         
         <!-- Canonical URL -->
@@ -79,12 +79,27 @@
             });
         </script>
 
+        <!-- JSON-LD -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Leonardo Andrade",
+          "alternateName": "DevLeonzera",
+          "url": "{{ url('/') }}",
+          "image": "{{ asset('img/about.jpg') }}",
+          "sameAs": [
+            "https://github.com/dev-leonzera",
+            "https://linkedin.com/in/leonandrade"
+          ],
+          "jobTitle": "Arquiteto de Software",
+          "knowsAbout": ["PHP", "Laravel", "Vue.js", "MySQL", "DevOps"]
+        }
+        </script>
+
         {{ $head ?? '' }}
     </head>
     <body class="antialiased bg-deep-black text-white font-inter">
-        @php
-            \Carbon\Carbon::setLocale('pt_BR');
-        @endphp
 
         <div class="relative overflow-x-hidden">
             {{ $slot }}

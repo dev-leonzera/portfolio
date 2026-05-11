@@ -9,20 +9,40 @@
                 @csrf
                 @method('PUT')
 
-                <div>
-                    <label for="title" class="form-label-premium">Título do Projeto</label>
-                    <input type="text" name="title" id="title" class="form-input-premium" value="{{ old('title', $project->title) }}" placeholder="Nome do seu grande projeto" required>
-                    @error('title')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="title" class="form-label-premium">Título do Projeto (PT)</label>
+                        <input type="text" name="title" id="title" class="form-input-premium" value="{{ old('title', $project->title) }}" placeholder="Nome do seu grande projeto" required>
+                        @error('title')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="title_en" class="form-label-premium">Project Title (EN)</label>
+                        <input type="text" name="title_en" id="title_en" class="form-input-premium" value="{{ old('title_en', $project->title_en) }}" placeholder="Project title in English">
+                        @error('title_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
-                <div>
-                    <label for="description" class="form-label-premium">Descrição Detalhada</label>
-                    <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva os desafios e soluções deste projeto..." required>{{ old('description', $project->description) }}</textarea>
-                    @error('description')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="description" class="form-label-premium">Descrição Detalhada (PT)</label>
+                        <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva os desafios..." required>{{ old('description', $project->description) }}</textarea>
+                        @error('description')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="description_en" class="form-label-premium">Detailed Description (EN)</label>
+                        <textarea name="description_en" id="description_en" rows="5" class="form-input-premium" placeholder="Describe challenges in English...">{{ old('description_en', $project->description_en) }}</textarea>
+                        @error('description_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div>

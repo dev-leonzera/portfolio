@@ -9,16 +9,16 @@
         </div>
         
         <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tighter font-outfit">
-            Olá, eu sou <br class="md:hidden"> <span class="text-gradient">DevLeonzera</span>
+            {{ __('messages.hero.greeting') }} <br class="md:hidden"> <span class="text-gradient">DevLeonzera</span>
         </h1>
         
         <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            Arquiteto de soluções digitais focado em <span class="text-white font-medium">clareza de código</span> e sistemas que evoluem. Conecto estratégia técnica ao propósito do seu negócio.
+            {!! __('messages.hero.description') !!}
         </p>
         
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <a href="#contact" class="btn-premium">Vamos Conversar</a>
-            <a href="#about" class="btn-outline-premium">Ver Trajetória</a>
+            <a href="#contact" class="btn-premium">{{ __('messages.hero.cta_talk') }}</a>
+            <a href="#about" class="btn-outline-premium">{{ __('messages.hero.cta_journey') }}</a>
         </div>
 
         <div class="flex justify-center space-x-8">

@@ -20,7 +20,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <label for="position" class="form-label-premium">Cargo / Título</label>
+                        <label for="position" class="form-label-premium">Cargo / Título (PT)</label>
                         <input type="text" name="position" id="position" class="form-input-premium" value="{{ old('position') }}" placeholder="Ex: Desenvolvedor Senior" required>
                         @error('position')
                             <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
@@ -28,6 +28,16 @@
                     </div>
 
                     <div>
+                        <label for="position_en" class="form-label-premium">Job Title (EN)</label>
+                        <input type="text" name="position_en" id="position_en" class="form-input-premium" value="{{ old('position_en') }}" placeholder="Ex: Senior Developer">
+                        @error('position_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:col-span-2">
                         <label for="company" class="form-label-premium">Empresa / Instituição</label>
                         <input type="text" name="company" id="company" class="form-input-premium" value="{{ old('company') }}" placeholder="Ex: Google, Microsoft..." required>
                         @error('company')
@@ -36,12 +46,22 @@
                     </div>
                 </div>
 
-                <div>
-                    <label for="description" class="form-label-premium">Descrição das Atividades</label>
-                    <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva suas responsabilidades e conquistas...">{{ old('description') }}</textarea>
-                    @error('description')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="description" class="form-label-premium">Descrição das Atividades (PT)</label>
+                        <textarea name="description" id="description" rows="5" class="form-input-premium" placeholder="Descreva suas responsabilidades...">{{ old('description') }}</textarea>
+                        @error('description')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="description_en" class="form-label-premium">Activities Description (EN)</label>
+                        <textarea name="description_en" id="description_en" rows="5" class="form-input-premium" placeholder="Describe your responsibilities...">{{ old('description_en') }}</textarea>
+                        @error('description_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -8,12 +8,22 @@
             <form action="{{ route('admin.skills.store') }}" method="POST" class="space-y-8">
                 @csrf
 
-                <div>
-                    <label for="name" class="form-label-premium">Nome da Habilidade</label>
-                    <input type="text" name="name" id="name" class="form-input-premium" value="{{ old('name') }}" placeholder="Ex: PHP, Laravel, Vue.js..." required>
-                    @error('name')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="name" class="form-label-premium">Nome (PT)</label>
+                        <input type="text" name="name" id="name" class="form-input-premium" value="{{ old('name') }}" placeholder="Ex: PHP" required>
+                        @error('name')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="name_en" class="form-label-premium">Name (EN)</label>
+                        <input type="text" name="name_en" id="name_en" class="form-input-premium" value="{{ old('name_en') }}" placeholder="Ex: PHP (English name)">
+                        @error('name_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div>

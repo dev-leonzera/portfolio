@@ -19,6 +19,13 @@ Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::get('/ebook', [EbookController::class, 'index'])->name('ebook');
 Route::get('/blog/{slug}', [PortfolioController::class, 'post'])->name('post.show');
 
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'pt'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 
 // Rotas autenticadas (painel admin)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

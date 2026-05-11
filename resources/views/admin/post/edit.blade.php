@@ -9,20 +9,40 @@
                 @csrf
                 @method('PUT')
 
-                <div>
-                    <label for="title" class="form-label-premium">Título do Artigo</label>
-                    <input type="text" name="title" id="title" class="form-input-premium" value="{{ old('title', $post->title) }}" placeholder="Um título impactante para o seu post" required>
-                    @error('title')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="title" class="form-label-premium">Título do Artigo (PT)</label>
+                        <input type="text" name="title" id="title" class="form-input-premium" value="{{ old('title', $post->title) }}" placeholder="Título impactante" required>
+                        @error('title')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="title_en" class="form-label-premium">Article Title (EN)</label>
+                        <input type="text" name="title_en" id="title_en" class="form-input-premium" value="{{ old('title_en', $post->title_en) }}" placeholder="Title in English">
+                        @error('title_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
-                <div>
-                    <label for="content" class="form-label-premium">Conteúdo (Markdown suportado)</label>
-                    <textarea name="content" id="content" rows="15" class="form-input-premium" placeholder="Escreva seu artigo aqui..." required>{{ old('content', $post->content) }}</textarea>
-                    @error('content')
-                        <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="content" class="form-label-premium">Conteúdo (PT)</label>
+                        <textarea name="content" id="content" rows="10" class="form-input-premium" placeholder="Escreva seu artigo aqui..." required>{{ old('content', $post->content) }}</textarea>
+                        @error('content')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="content_en" class="form-label-premium">Content (EN)</label>
+                        <textarea name="content_en" id="content_en" rows="10" class="form-input-premium" placeholder="Write your article in English...">{{ old('content_en', $post->content_en) }}</textarea>
+                        @error('content_en')
+                            <p class="text-red-500 text-[10px] uppercase font-bold mt-2 ml-1 tracking-widest">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -4,16 +4,16 @@
             <div class="text-center md:text-left">
                 <a href="#" class="text-2xl tracking-tighter text-white font-light group">Dev<span class="font-black group-hover:text-gold-accent transition-colors duration-300">Leonzera</span><span class="text-gold-accent">.</span></a>
                 <p class="text-gray-500 text-sm mt-4 max-w-xs font-light leading-relaxed">
-                    Focado em clareza, qualidade e soluções pensadas para durar.
+                    {{ __('messages.footer.description') }}
                 </p>
             </div>
             
             <div class="flex flex-wrap justify-center gap-8 text-xs uppercase font-bold tracking-[0.2em] text-gray-400">
-                <a href="#about" class="hover:text-gold-accent transition-colors">Sobre</a>
-                <a href="#services" class="hover:text-gold-accent transition-colors">Serviços</a>
-                <a href="#projects" class="hover:text-gold-accent transition-colors">Projetos</a>
-                <a href="#blog" class="hover:text-gold-accent transition-colors">Blog</a>
-                <a href="#contact" class="hover:text-gold-accent transition-colors">Contato</a>
+                <a href="#about" class="hover:text-gold-accent transition-colors">{{ __('messages.nav.about') }}</a>
+                <a href="#services" class="hover:text-gold-accent transition-colors">{{ __('messages.nav.services') }}</a>
+                <a href="#projects" class="hover:text-gold-accent transition-colors">{{ __('messages.nav.projects') }}</a>
+                <a href="#blog" class="hover:text-gold-accent transition-colors">{{ __('messages.nav.blog') }}</a>
+                <a href="#contact" class="hover:text-gold-accent transition-colors">{{ __('messages.nav.contact') }}</a>
             </div>
 
             <div class="flex space-x-6">
@@ -28,10 +28,10 @@
         
         <div class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-[11px] text-gray-600 uppercase tracking-widest font-bold">
-                &copy; {{ date('Y') }} DevLeonzera. Todos os direitos reservados.
+                &copy; {{ date('Y') }} DevLeonzera. {{ __('messages.footer.rights') }}
             </p>
             <p class="text-[11px] text-gray-600 uppercase tracking-widest font-bold">
-                Feito com ❤️ e ☕
+                {{ __('messages.footer.made_with') }}
             </p>
         </div>
     </div>

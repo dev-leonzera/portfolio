@@ -6,13 +6,19 @@
             </div>
 
             <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-white' : 'hover:text-gold-accent' }} transition duration-300">Início</a>
-                <a href="{{ route('home') }}#about" class="hover:text-gold-accent transition duration-300">Sobre</a>
-                <a href="{{ route('home') }}#services" class="hover:text-gold-accent transition duration-300">Serviços</a>
-                <a href="{{ route('home') }}#projects" class="hover:text-gold-accent transition duration-300">Projetos</a>
-                <a href="{{ route('home') }}#resume" class="hover:text-gold-accent transition duration-300">Experiência</a>
-                <a href="{{ route('home') }}#blog" class="hover:text-gold-accent transition duration-300">Blog</a>
-                <a href="{{ route('home') }}#contact" class="hover:text-gold-accent transition duration-300">Contato</a>
+                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-white' : 'hover:text-gold-accent' }} transition duration-300">{{ __('messages.nav.home') }}</a>
+                <a href="{{ route('home') }}#about" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.about') }}</a>
+                <a href="{{ route('home') }}#services" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.services') }}</a>
+                <a href="{{ route('home') }}#projects" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.projects') }}</a>
+                <a href="{{ route('home') }}#resume" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.experience') }}</a>
+                <a href="{{ route('home') }}#blog" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.blog') }}</a>
+                <a href="{{ route('home') }}#contact" class="hover:text-gold-accent transition duration-300">{{ __('messages.nav.contact') }}</a>
+                
+                <div class="flex items-center space-x-2 border-l border-gray-700 pl-6 ml-6">
+                    <a href="{{ route('lang.switch', 'pt') }}" class="{{ app()->getLocale() == 'pt' ? 'text-gold-accent' : 'text-gray-500 hover:text-white' }} transition-colors duration-300">PT</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() == 'en' ? 'text-gold-accent' : 'text-gray-500 hover:text-white' }} transition-colors duration-300">EN</a>
+                </div>
             </nav>                    
 
             <div class="md:hidden">
@@ -30,13 +36,19 @@
              x-transition:enter-start="opacity-0 -translate-y-2" 
              x-transition:enter-end="opacity-100 translate-y-0" 
              class="md:hidden mt-4 py-6 space-y-4 glass-card border-none text-center">
-            <a href="{{ route('home') }}" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest {{ request()->routeIs('home') ? 'text-gold-accent' : 'text-gray-300' }}">Início</a>
-            <a href="{{ route('home') }}#about" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Sobre</a>
-            <a href="{{ route('home') }}#services" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Serviços</a>
-            <a href="{{ route('home') }}#projects" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Projetos</a>
-            <a href="{{ route('home') }}#resume" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Experiência</a>
-            <a href="{{ route('home') }}#blog" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Blog</a>
-            <a href="{{ route('home') }}#contact" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">Contato</a>
+            <a href="{{ route('home') }}" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest {{ request()->routeIs('home') ? 'text-gold-accent' : 'text-gray-300' }}">{{ __('messages.nav.home') }}</a>
+            <a href="{{ route('home') }}#about" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.about') }}</a>
+            <a href="{{ route('home') }}#services" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.services') }}</a>
+            <a href="{{ route('home') }}#projects" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.projects') }}</a>
+            <a href="{{ route('home') }}#resume" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.experience') }}</a>
+            <a href="{{ route('home') }}#blog" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.blog') }}</a>
+            <a href="{{ route('home') }}#contact" @click="mobileMenuOpen = false" class="block text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-accent">{{ __('messages.nav.contact') }}</a>
+            
+            <div class="flex justify-center space-x-4 pt-4 border-t border-gray-800">
+                <a href="{{ route('lang.switch', 'pt') }}" class="{{ app()->getLocale() == 'pt' ? 'text-gold-accent' : 'text-gray-500' }} font-bold text-xs uppercase">Português</a>
+                <span class="text-gray-800">|</span>
+                <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() == 'en' ? 'text-gold-accent' : 'text-gray-500' }} font-bold text-xs uppercase">English</a>
+            </div>
         </div>
     </div>
 </header>

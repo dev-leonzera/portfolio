@@ -36,13 +36,18 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
             'content' => 'required|string',
+            'content_en' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
         ]);
 
         // Sanitiza o conteúdo do post
         $validated['content'] = Purify::clean($validated['content']);
+        if (isset($validated['content_en'])) {
+            $validated['content_en'] = Purify::clean($validated['content_en']);
+        }
         
         // Gera o slug
         $validated['slug'] = Str::slug($validated['title']);
@@ -85,13 +90,18 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
             'content' => 'required|string',
+            'content_en' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
         ]);
 
         // Sanitiza o conteúdo do post
         $validated['content'] = Purify::clean($validated['content']);
+        if (isset($validated['content_en'])) {
+            $validated['content_en'] = Purify::clean($validated['content_en']);
+        }
         
         // Atualiza o slug se o título mudou
         if ($post->title !== $validated['title']) {

@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->web(append: [
+            \App\Http\Middleware\SetLocale::class,
+        ]);
         // Temporariamente desabilitado para resolver problemas de CSP
         // $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
     })

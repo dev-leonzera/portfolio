@@ -5,8 +5,8 @@
 
     <div class="container mx-auto max-w-7xl relative z-10">
         <div class="reveal text-center mb-16 md:mb-24">
-            <h2 class="text-gold-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4">Serviços</h2>
-            <p class="text-4xl md:text-5xl font-bold text-white font-outfit">Especialidades</p>
+            <h2 class="text-gold-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4">{{ __('messages.services.title') }}</h2>
+            <p class="text-4xl md:text-5xl font-bold text-white font-outfit">{{ __('messages.services.subtitle') }}</p>
             <div class="w-12 h-1 bg-gold-accent mx-auto mt-6 rounded-full"></div>
         </div>
 
@@ -17,9 +17,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Desenvolvimento Full-Stack</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.fullstack.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Soluções completas de ponta a ponta, unindo back-ends robustos em Laravel com front-ends dinâmicos e performáticos.
+                    {{ __('messages.services.list.fullstack.description') }}
                 </p>
             </div>
 
@@ -29,9 +29,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Web Apps Progressivas</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.pwa.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Desenvolvimento de PWAs que oferecem experiência de aplicativo nativo diretamente no navegador com alta performance.
+                    {{ __('messages.services.list.pwa.description') }}
                 </p>
             </div>
 
@@ -41,9 +41,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Consultoria Técnica</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.consulting.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Análise de código, otimização de performance e orientação sobre as melhores arquiteturas para o seu negócio.
+                    {{ __('messages.services.list.consulting.description') }}
                 </p>
             </div>
 
@@ -53,9 +53,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Arquitetura de Dados</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.data.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Modelagem de bancos de dados eficientes, garantindo integridade, performance e segurança para as informações.
+                    {{ __('messages.services.list.data.description') }}
                 </p>
             </div>
 
@@ -65,9 +65,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Segurança & Performance</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.security.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Otimização de sistemas existentes para máxima velocidade e implementação de camadas de segurança robustas.
+                    {{ __('messages.services.list.security.description') }}
                 </p>
             </div>
 
@@ -77,9 +77,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-4">Modelagem de Soluções</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ __('messages.services.list.solutions.title') }}</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Estruturo a base do sistema antes do código, definindo caminhos claros e arquiteturas fáceis de evoluir.
+                    {{ __('messages.services.list.solutions.description') }}
                 </p>
             </div>
         </div>

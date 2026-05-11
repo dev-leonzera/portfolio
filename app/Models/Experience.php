@@ -5,14 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\Translatable;
+
 class Experience extends Model
 {
-    use HasFactory;
+    use HasFactory, Translatable;
 
     protected $fillable = [
         'company',
         'position',
+        'position_en',
         'description',
+        'description_en',
         'year_start',
         'start_month',
         'year_end',
