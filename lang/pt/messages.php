@@ -4,6 +4,7 @@ return [
     'nav' => [
         'title' => 'DevLeonzera - Arquiteto de Software & Desenvolvedor Full-Stack',
         'meta_description' => 'Desenvolvedor de software especializado em PHP, Laravel, Vue.js e desenvolvimento web full-stack.',
+        'keywords' => 'DevLeonzera, Leonardo Andrade, Arquiteto de Software, Desenvolvedor Full-Stack, PHP, Laravel, Vue.js, MySQL, DevOps, Natal RN, Freelancer Web',
         'home' => 'Início',
         'about' => 'Sobre',
         'services' => 'Serviços',

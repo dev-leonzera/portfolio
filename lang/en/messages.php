@@ -4,6 +4,7 @@ return [
     'nav' => [
         'title' => 'DevLeonzera - Software Architect & Full-Stack Developer',
         'meta_description' => 'Software developer specialized in PHP, Laravel, Vue.js and full-stack web development.',
+        'keywords' => 'DevLeonzera, Leonardo Andrade, Software Architect, Full-Stack Developer, PHP, Laravel, Vue.js, MySQL, DevOps, Brazil, Web Freelancer',
         'home' => 'Home',
         'about' => 'About',
         'services' => 'Services',

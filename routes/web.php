@@ -26,6 +26,16 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
+Route::get('/sitemap.xml', function () {
+    $posts = \App\Models\Post::whereNotNull('published_at')->orderBy('updated_at', 'desc')->get();
+    return response()->view('sitemap', compact('posts'))->header('Content-Type', 'text/xml');
+});
+
+Route::get('/robots.txt', function () {
+    return response("User-agent: *\nDisallow: /admin\nDisallow: /login\nDisallow: /register\n\nSitemap: " . url('/sitemap.xml'), 200)
+        ->header('Content-Type', 'text/plain');
+});
+
 
 // Rotas autenticadas (painel admin)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

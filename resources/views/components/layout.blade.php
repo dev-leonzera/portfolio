@@ -6,13 +6,34 @@
 
         <title>{{ $title ?? __('messages.nav.title') }}</title>
         <meta name="description" content="{{ $description ?? __('messages.nav.meta_description') }}">
-        
+        <meta name="keywords" content="{{ __('messages.nav.keywords') }}">
+        <meta name="author" content="Leonardo Andrade (DevLeonzera)">
+        <meta name="robots" content="index, follow">
+
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
+
+        <!-- Multilingual Support -->
+        <link rel="alternate" hreflang="pt-br" href="{{ url('/lang/pt') }}">
+        <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}">
+        <link rel="alternate" hreflang="x-default" href="{{ url('/') }}">
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:site_name" content="DevLeonzera Portfolio">
         <meta property="og:title" content="{{ $title ?? __('messages.nav.title') }}">
-        <meta property="og:image" content="{{ asset('img/about.jpg') }}">
-        
+        <meta property="og:description" content="{{ $description ?? __('messages.nav.meta_description') }}">
+        <meta property="og:image" content="{{ asset('img/logo.png') }}">
+        <meta property="og:locale" content="{{ app()->getLocale() == 'pt' ? 'pt_BR' : 'en_US' }}">
+        <meta property="og:locale:alternate" content="{{ app()->getLocale() == 'pt' ? 'en_US' : 'pt_BR' }}">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{{ url()->current() }}">
+        <meta name="twitter:title" content="{{ $title ?? __('messages.nav.title') }}">
+        <meta name="twitter:description" content="{{ $description ?? __('messages.nav.meta_description') }}">
+        <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
         <!-- Canonical URL -->
         <link rel="canonical" href="{{ url()->current() }}">
         
