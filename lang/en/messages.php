@@ -15,9 +15,9 @@ return [
     ],
     'hero' => [
         'greeting' => "Hi, I'm",
-        'description' => 'Digital solutions architect focused on <span class="text-white font-medium">code clarity</span> and evolving systems. I connect technical strategy to your business purpose.',
+        'description' => 'Development and evolution of web systems focused on stability, architectural clarity, and sustainable growth.<br><br>I build robust applications from scratch and evolve systems in production with a focus on scalability, stability and technical sustainability.',
         'cta_talk' => "Let's Talk",
-        'cta_journey' => 'View Journey',
+        'cta_journey' => 'How I Work',
     ],
     'footer' => [
         'description' => 'Focused on clarity, quality and solutions built to last.',
@@ -81,41 +81,29 @@ return [
         'code' => 'Code',
     ],
     'services' => [
-        'title' => 'Services',
-        'subtitle' => 'Specialties',
+        'title' => 'Expertise',
+        'subtitle' => 'Areas of Operation',
         'list' => [
-            'fullstack' => [
-                'title' => 'Full-Stack Development',
-                'description' => 'Complete end-to-end solutions, joining robust Laravel back-ends with dynamic and high-performance front-ends.',
+            'custom' => [
+                'title' => 'Custom Systems Development',
+                'description' => 'From concept to production. Scalable architecture from day one.',
             ],
-            'pwa' => [
-                'title' => 'Progressive Web Apps',
-                'description' => 'Development of PWAs that offer a native app experience directly in the browser with high performance.',
+            'modernization' => [
+                'title' => 'Software Modernization & Evolution',
+                'description' => 'Diagnosis, refactoring, and modernization of legacy systems. I transform projects into sustainable and scalable solutions.',
             ],
-            'consulting' => [
-                'title' => 'Technical Consulting',
-                'description' => 'Code analysis, performance optimization, and guidance on the best architectures for your business.',
-            ],
-            'data' => [
-                'title' => 'Data Architecture',
-                'description' => 'Modeling efficient databases, ensuring integrity, performance, and security for information.',
-            ],
-            'security' => [
-                'title' => 'Security & Performance',
-                'description' => 'Optimization of existing systems for maximum speed and implementation of robust security layers.',
-            ],
-            'solutions' => [
-                'title' => 'Solution Modeling',
-                'description' => 'I structure the system base before coding, defining clear paths and easy-to-evolve architectures.',
+            'leadership' => [
+                'title' => 'Architecture & Technical Leadership',
+                'description' => 'Architecture definition, stack decisions, and mentorship. Alignment between technical vision and business goals.',
             ],
         ],
     ],
     'about' => [
         'title' => 'About Me',
-        'subtitle' => 'Technical Excellence <br>& Purpose.',
-        'description' => 'I believe that well-made software is born from good decisions. I am dedicated to writing clean code and well-defined architectures. I also share what I learn, helping other developers grow with clarity and focus.',
-        'seniority_label' => 'Seniority',
-        'seniority_value' => 'Mid-Level',
+        'subtitle' => 'Healthy systems start with <br>good technical decisions.',
+        'description' => 'Web systems development and evolution focused on stability, architectural clarity, and sustainable maintenance. I build tailor-made applications and modernize existing systems, always seeking solutions that make sense both technically and operationally.<br><br>Well-structured software doesn\'t just solve problems in the present — it facilitates the evolution of the product and the team over time.',
+        'seniority_label' => 'Expertise',
+        'seniority_value' => 'Web Systems Engineering',
         'location_label' => 'Location',
         'location_value' => 'Natal, Brazil',
         'cv_button' => 'Download Resume',

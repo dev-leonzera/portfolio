@@ -12,7 +12,7 @@
                 <h2 class="text-gold-accent text-sm font-semibold tracking-[0.2em] uppercase mb-6">{{ __('messages.about.title') }}</h2>
                 <h3 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight font-outfit">{!! __('messages.about.subtitle') !!}</h3>
                 <p class="text-gray-400 text-lg leading-relaxed font-light mb-10">
-                    {{ __('messages.about.description') }}
+                    {!! __('messages.about.description') !!}
                 </p>
                 
                 <div class="grid grid-cols-2 gap-6 mb-12">

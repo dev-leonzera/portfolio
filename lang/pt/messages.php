@@ -15,9 +15,9 @@ return [
     ],
     'hero' => [
         'greeting' => 'Olá, eu sou',
-        'description' => 'Arquiteto de soluções digitais focado em <span class="text-white font-medium">clareza de código</span> e sistemas que evoluem. Conecto estratégia técnica ao propósito do seu negócio.',
+        'description' => 'Desenvolvimento e evolução de sistemas web com foco em estabilidade, clareza arquitetural e crescimento sustentável.<br><br>Construo aplicações robustas do zero e evoluo sistemas em produção com foco em escalabilidade, estabilidade e sustentabilidade técnica.',
         'cta_talk' => 'Vamos Conversar',
-        'cta_journey' => 'Ver Trajetória',
+        'cta_journey' => 'Como Eu Trabalho',
     ],
     'footer' => [
         'description' => 'Focado em clareza, qualidade e soluções pensadas para durar.',
@@ -81,41 +81,29 @@ return [
         'code' => 'Code',
     ],
     'services' => [
-        'title' => 'Serviços',
-        'subtitle' => 'Especialidades',
+        'title' => 'Expertise',
+        'subtitle' => 'Áreas de Atuação',
         'list' => [
-            'fullstack' => [
-                'title' => 'Desenvolvimento Full-Stack',
-                'description' => 'Soluções completas de ponta a ponta, unindo back-ends robustos em Laravel com front-ends dinâmicos e performáticos.',
+            'custom' => [
+                'title' => 'Desenvolvimento de Sistemas Sob Medida',
+                'description' => 'Do conceito à produção. Arquitetura escalável desde o dia 1.',
             ],
-            'pwa' => [
-                'title' => 'Web Apps Progressivas',
-                'description' => 'Desenvolvimento de PWAs que oferecem experiência de aplicativo nativo diretamente no navegador com alta performance.',
+            'modernization' => [
+                'title' => 'Modernização & Evolução de Software',
+                'description' => 'Diagnóstico, refatoração e modernização de sistemas legados. Transformo projetos em soluções sustentáveis e escaláveis.',
             ],
-            'consulting' => [
-                'title' => 'Consultoria Técnica',
-                'description' => 'Análise de código, otimização de performance e orientação sobre as melhores arquiteturas para o seu negócio.',
-            ],
-            'data' => [
-                'title' => 'Arquitetura de Dados',
-                'description' => 'Modelagem de bancos de dados eficientes, garantindo integridade, performance e segurança para as informações.',
-            ],
-            'security' => [
-                'title' => 'Segurança & Performance',
-                'description' => 'Otimização de sistemas existentes para máxima velocidade e implementação de camadas de segurança robustas.',
-            ],
-            'solutions' => [
-                'title' => 'Modelagem de Soluções',
-                'description' => 'Estruturo a base do sistema antes do código, definindo caminhos claros e arquiteturas fáceis de evoluir.',
+            'leadership' => [
+                'title' => 'Arquitetura & Direção Técnica',
+                'description' => 'Definição de arquitetura, decisões de stack e mentoria. Alinhamento entre visão técnica e objetivos de negócio.',
             ],
         ],
     ],
     'about' => [
         'title' => 'Sobre Mim',
-        'subtitle' => 'Excelência Técnica <br>& Propósito.',
-        'description' => 'Acredito que software bem feito nasce de boas decisões. Me dedico a escrever código limpo e arquiteturas bem definidas. Também compartilho o que aprendo, ajudando outros desenvolvedores a crescer com clareza e foco.',
-        'seniority_label' => 'Senioridade',
-        'seniority_value' => 'Pleno',
+        'subtitle' => 'Sistemas saudáveis começam com <br>boas decisões técnicas.',
+        'description' => 'Desenvolvimento e evolução de sistemas web com foco em estabilidade, clareza arquitetural e manutenção sustentável. Construo aplicações sob medida e modernizo sistemas já existentes, sempre buscando soluções que façam sentido tanto tecnicamente quanto operacionalmente.<br><br>Software bem estruturado não apenas resolve problemas no presente — facilita a evolução do produto e do time ao longo do tempo.',
+        'seniority_label' => 'Especialidade',
+        'seniority_value' => 'Engenharia de Sistemas Web',
         'location_label' => 'Localização',
         'location_value' => 'Natal, RN',
         'cv_button' => 'Baixar Currículo',

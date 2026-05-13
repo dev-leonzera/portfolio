@@ -9,10 +9,10 @@
         </div>
         
         <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tighter font-outfit">
-            {{ __('messages.hero.greeting') }} <br class="md:hidden"> <span class="text-gradient">DevLeonzera</span>
+            {{ __('messages.hero.greeting') }} <br class="md:hidden"> <span class="text-gradient">Leonardo Andrade</span>
         </h1>
         
-        <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+        <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             {!! __('messages.hero.description') !!}
         </p>
         
