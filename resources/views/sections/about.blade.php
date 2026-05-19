@@ -26,8 +26,11 @@
                     </div>
                 </div>
 
-                <a href="https://drive.google.com/file/d/1Y5LqjJ9U-dPehFF899fWV371eK0iKaKM/view?usp=sharing" target="_blank" class="btn-outline-premium">
-                    {{ __('messages.about.cv_button') }}
+                <a href="{{ asset('pdf/curriculo.pdf') }}" download="Curriculo_Leonardo_Andrade.pdf" class="btn-outline-premium gap-2 group">
+                    <svg class="w-5 h-5 text-gold-accent transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>{{ __('messages.about.cv_button') }}</span>
                 </a>
             </div>
         </div>
